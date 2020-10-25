@@ -79,13 +79,14 @@ body {
 .navbar-brand{
   font-family: Georgia, Times, serif;
   font-style: italic;
-  font-size: 1.72em;
+  font-size: 1.27em;
   text-shadow: 1.72px 1.72px #666666; /*文本阴影，运用的好可以呈现3D效果*/
 }
 .navbar-nav{
   font-family: "楷体";
   text-shadow: 1.27px 1.27px #666666; /*文本阴影，运用的好可以呈现3D效果*/
 }
+
 
 /*打字机字体*/
 #subtitle{
