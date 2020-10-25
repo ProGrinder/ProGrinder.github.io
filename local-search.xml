@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>测试文章</title>
+    <link href="/2020/10/01/default/"/>
+    <url>/2020/10/01/default/</url>
+    
+    <content type="html"><![CDATA[<p>余下的正文</p><p><img src="/img/default/Genji.png"></p><p>文章内容图片，不适用绝对路径</p><h3 id="日期-字数-阅读时长-阅读数"><a href="#日期-字数-阅读时长-阅读数" class="headerlink" title="日期/字数/阅读时长/阅读数"></a>日期/字数/阅读时长/阅读数</h3><p>显示在文章页大标题下的文章信息，除了作者和阅读次数，其他功能都是默认开启的。</p><pre><code class="hljs yaml"><span class="hljs-attr">post:</span>  <span class="hljs-attr">meta:</span>    <span class="hljs-attr">author:</span>  <span class="hljs-comment"># 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值</span>      <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span>    <span class="hljs-attr">date:</span>  <span class="hljs-comment"># 文章日期，优先根据 front-matter 里 date 字段，其次是 md 文件日期</span>      <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span>      <span class="hljs-attr">format:</span> <span class="hljs-string">&quot;dddd, MMMM Do YYYY, h:mm a&quot;</span>  <span class="hljs-comment"># 格式参照 ISO-8601 日期格式化</span>    <span class="hljs-attr">wordcount:</span>  <span class="hljs-comment"># 字数统计</span>      <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span>      <span class="hljs-attr">format:</span> <span class="hljs-string">&quot;&#123;&#125; 字&quot;</span>  <span class="hljs-comment"># 显示的文本，&#123;&#125;是数字的占位符（必须包含)，下同</span>    <span class="hljs-attr">min2read:</span>  <span class="hljs-comment"># 阅读时间</span>      <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span>      <span class="hljs-attr">format:</span> <span class="hljs-string">&quot;&#123;&#125; 分钟&quot;</span>    <span class="hljs-attr">views:</span>  <span class="hljs-comment"># 阅读次数</span>      <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span>      <span class="hljs-attr">source:</span> <span class="hljs-string">&quot;leancloud&quot;</span>  <span class="hljs-comment"># 统计数据来源，可选：leancloud | busuanzi   注意不蒜子会间歇抽风</span>      <span class="hljs-attr">format:</span> <span class="hljs-string">&quot;&#123;&#125; 次&quot;</span></code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>Diary</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>xxx</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>文章标题</title>
+    <link href="/2019/10/10/Test/"/>
+    <url>/2019/10/10/Test/</url>
+    
+    <content type="html"><![CDATA[<p>这里是正文内容，可以使用html和markdown的格式。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Hexo</tag>
+      
+      <tag>Fluid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>

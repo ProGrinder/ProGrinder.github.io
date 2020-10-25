@@ -1,0 +1,140 @@
+/* <!-- 自改样式 --> */
+  
+/* 右侧滚动条 */
+.sidebar::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 5px;
+  height: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  /* background-color: #b6b6b6; */
+  background-color: transparent;
+  border: 0px solid transparent;
+  border-radius: 10px
+}
+
+.sidebar:hover::-webkit-scrollbar {
+  display: inline-block;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb {
+  background-color: #8d8d8d;
+  border: 0px solid #fff;
+}
+
+.sidebar:hover::-webkit-scrollbar-track {
+  background-color: inherit
+}
+
+.sidebar::-webkit-scrollbar-thumb:active {
+  background-color: #666666
+}
+
+.sidebar {
+  -webkit-overflow-scrolling: touch
+}
+
+body {
+  -webkit-overflow-scrolling: touch
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 5px;
+  height: 5px
+}
+
+::-webkit-scrollbar-track {
+  background-color: inherit
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #8d8d8d;
+  border: 0px solid #fff;
+  border-radius: 10px
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #666666
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #0b87da
+}
+
+@media screen and (max-width: 48em) { /* 760px */
+  .sidebar::-webkit-scrollbar {
+    display: none;
+    background-color: transparent;
+  }
+
+  code::-webkit-scrollbar {
+    /* display: none; */
+    background-color: transparent;
+  }
+}
+
+/* navbar的字体 */
+.navbar-brand{
+  font-family: Georgia, Times, serif;
+  font-style: italic;
+  font-size: 1.72em;
+  text-shadow: 1.72px 1.72px #666666; /*文本阴影，运用的好可以呈现3D效果*/
+}
+.navbar-nav{
+  font-family: "楷体";
+  text-shadow: 1.27px 1.27px #666666; /*文本阴影，运用的好可以呈现3D效果*/
+}
+
+/*打字机字体*/
+#subtitle{
+  font-family: "Trebuchet MS", "楷体", Helvetica, sans-serif;
+  text-shadow: 1.72px 1.72px #666666;
+
+}
+
+
+
+/*右侧目录栏*/
+#toc {
+  transition: all 0.5s linear;
+  height: auto;
+  background-color: var(--board-bg-color);
+  padding: 1.2em;
+  border-radius: 6px;
+
+  /* 透明度 */
+  opacity:0.72;
+}
+
+#toc, #toc * {
+  transition: all 0.3s ease-in-out;
+}
+
+#toc .toc-header{
+  color: var(--text-color);
+}
+
+
+/* 背景图片 */
+@media screen and (max-width: 1280px)
+{
+  body{
+    background: url(../img/default/bg-phone.jpg) no-repeat center center fixed;
+    background-size: 100%;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1280px)
+{
+  body{
+    background: url(../img/default/bg-pc.jpg) no-repeat center center fixed;
+    background-size: 107.2%;
+    height: 100%;
+    width: 100%;
+  }
+}
+
