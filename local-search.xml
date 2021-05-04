@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>今天是个好日子</title>
+    <link href="/2021/05/04/20210504/"/>
+    <url>/2021/05/04/20210504/</url>
+    
+    <content type="html"><![CDATA[<p>今天，万明博来到了我家</p><p>以下是背包问题的算法递归方程</p><pre><code class="hljs C++"><span class="hljs-keyword">if</span>(w[i] &lt;= j)&#123;    m[i][j] = max(m[i<span class="hljs-number">-1</span>][j], m[i<span class="hljs-number">-1</span>][j - w[i]] + v[i]); <span class="hljs-comment">//max()函数属于&lt;algorithm&gt;库</span>&#125;<span class="hljs-keyword">else</span>&#123;    m[i][j] = m[i<span class="hljs-number">-1</span>][j];&#125;</code></pre>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>测试文章</title>
     <link href="/2020/10/01/default/"/>
     <url>/2020/10/01/default/</url>
