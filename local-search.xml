@@ -17,6 +17,19 @@
   
   
   <entry>
+    <title>虚拟机VMware搭建Hadoop3.2.2</title>
+    <link href="/2021/03/31/20200331/"/>
+    <url>/2021/03/31/20200331/</url>
+    
+    <content type="html"><![CDATA[<h2 id="1-准备Linux主机环境"><a href="#1-准备Linux主机环境" class="headerlink" title="1.准备Linux主机环境"></a>1.准备Linux主机环境</h2><p>VMware:  VMware Workstation 15Pro    <a href="https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html">VMware下载地址</a></p><p>CenOS:  CentOS-8.3.2011-x86_64-dvd1.iso    <a href="http://isoredirect.centos.org/centos/8/isos/x86_64/">CenOS下载地址</a></p><p>免密登录 可以帮助解决Permission denied（publickey,gssapi-keyex,gssapi-with-mic)）</p><p><strong>Step1</strong>: 安装Vmware Workstation 15Pro</p><p>​       该步骤不是实验内容核心，具体省略跳过。</p><p><strong>Step2</strong>: 安装3台CenOS8虚拟机</p><p>由于不是实验内容核心，这里只放我所参照的教程: </p><p>Vmware安装CenOS8: <a href="https://www.cnblogs.com/Dear-XiaoLe/articles/12201099.html">https://www.cnblogs.com/Dear-XiaoLe/articles/12201099.html</a></p><p>​       按照教程配置，成功创建3台CenOS虚拟机</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>测试文章</title>
     <link href="/2020/10/01/default/"/>
     <url>/2020/10/01/default/</url>
