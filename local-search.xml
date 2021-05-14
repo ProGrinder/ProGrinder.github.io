@@ -55,6 +55,31 @@
   
   
   <entry>
+    <title>Git命令推送简记</title>
+    <link href="/2020/07/29/20200729/"/>
+    <url>/2020/07/29/20200729/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Git-Help"><a href="#Git-Help" class="headerlink" title="Git-Help"></a>Git-Help</h1><p>Git命令基础操作=&gt;自用</p><h2 id="本地推送流程"><a href="#本地推送流程" class="headerlink" title="本地推送流程"></a>本地推送流程</h2><ul><li><p>Step1: 右键=&gt; git bash here,弹出git命令行窗口</p></li><li><p>Step2: 初始化本地仓库</p><pre><code class="hljs bash">git init</code></pre><blockquote><p>本地默认创建主分支master</p></blockquote></li><li><p>Step3: 本地仓库链接远程仓库</p><pre><code class="hljs bash">git remote add [`远程仓库名`] [`远程仓库地址`]</code></pre><blockquote><p>这里的远程仓库名，习惯上一般使用 origin</p></blockquote></li><li><p>Step4: 查看本地仓库状态</p><pre><code class="hljs bash">git status</code></pre><blockquote><p>该命令显示已修改但未同步的文件</p></blockquote></li><li><p>Step5: 将文件同步添加到暂存区</p><pre><code class="hljs bash">git add [`状态里的新文件`]</code></pre><blockquote><p>可用git add -A一键添加</p></blockquote></li><li><p>Step6: 将文件添加到仓库</p><pre><code class="hljs bash">git commit -m <span class="hljs-string">&#x27;[`相关注释文字`]&#x27;</span></code></pre><blockquote><p>注意-m后的 注释文字要用引号</p></blockquote></li><li><p>Step7: 将本地某分支推送到远程仓库，如果远程没有此分支会自动创建该分支，默认为master</p><pre><code class="hljs bash">git push origin [`本地分支名`]</code></pre><blockquote><p>origin 为上面提到的默认远程仓库名</p></blockquote></li></ul><hr><h2 id="Tips-额外需求"><a href="#Tips-额外需求" class="headerlink" title="Tips[额外需求]"></a>Tips[额外需求]</h2><h3 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h3><ol><li>一键添加</li></ol><pre><code class="hljs bash">git add -A</code></pre><p><em># Changes to be committed:</em></p><p><em>#   new file:   add-me</em></p><p><em>#   modified:   change-me</em></p><p><em>#   deleted:    delete-me</em></p><blockquote><p>​    可以一键添加所有未跟踪(new)、修改(modified)、被删除(deleted)文件，修改本地仓库再次提交很方便</p></blockquote><h3 id="git-push-origin"><a href="#git-push-origin" class="headerlink" title="git push origin"></a>git push origin</h3><ol><li>删除远程仓库的指定远程分支</li></ol><pre><code class="hljs bash">git push origin --delete [`远程分支名`]</code></pre><ol start="2"><li>强制推送</li></ol><pre><code class="hljs bash">git push -f</code></pre><blockquote><p>用于解决一些本地和远程始终不能同步[当前git pull无效]的问题，比如</p><p>Updates were rejected because the tip of your current branch is behind  its remote counterpart. Integrate the remote changes(e.g.’git pull …’) before pushing again. </p></blockquote><h3 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h3><ol><li>查看远程仓库</li></ol><pre><code class="hljs bash">git remote</code></pre><blockquote><p>显示当前已链接的<code>[远程仓库名]</code>  (但不显示远程仓库地址)</p></blockquote><ol start="2"><li>取消指定链接的远程仓库</li></ol><pre><code class="hljs bash">git remote remove [`远程仓库名`]</code></pre><ol start="3"><li>链接的远程仓库端口不是默认的port:22</li></ol><pre><code class="hljs bash">git remote origin ssh://[`用户名`]@xx.xx.xx.xx:[`端口号`]/../../xxx.git</code></pre><blockquote><p>当远程开放的ssh不是port:22时，使用2、3命令重写绑定链接远程仓库</p><p><strong>PS</strong>:一般github的.git开放ssh端口都是port:22，不用管这个;</p><p>git远程推送你自己的云服务器时，需要查看你自己设定的ssh端口,当然一般也是port:22，但可自主修改</p></blockquote><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ul><li><p>Step7推送时: error: src refspec <code>[branchName]</code> does not match any</p><p>修改本地分支名称</p><pre><code class="hljs bash">git branch -m [oldBranchName] [newBranchName]</code></pre></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>常用命令</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>文章标题</title>
     <link href="/2019/10/10/Test/"/>
     <url>/2019/10/10/Test/</url>
