@@ -1268,8 +1268,8 @@
   
   <entry>
     <title>进阶数据结构-(7)-Chtholly Tree</title>
-    <link href="/2021/05/10/Algorithm/Template/20210508-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(7)-Chtholly%20Tree/"/>
-    <url>/2021/05/10/Algorithm/Template/20210508-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(7)-Chtholly%20Tree/</url>
+    <link href="/2021/05/07/Algorithm/Template/20210507-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(7)-Chtholly%20Tree/"/>
+    <url>/2021/05/07/Algorithm/Template/20210507-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(7)-Chtholly%20Tree/</url>
     
     <content type="html"><![CDATA[]]></content>
     
@@ -1297,8 +1297,8 @@
   
   <entry>
     <title>进阶数据结构-(6)-可持久化数据结构</title>
-    <link href="/2021/05/07/Algorithm/Template/20210507-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(6)-%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    <url>/2021/05/07/Algorithm/Template/20210507-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(6)-%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <link href="/2021/05/06/Algorithm/Template/20210506-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(6)-%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <url>/2021/05/06/Algorithm/Template/20210506-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(6)-%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
     
     <content type="html"><![CDATA[]]></content>
     
@@ -1326,8 +1326,8 @@
   
   <entry>
     <title>进阶数据结构-(5)-平衡树</title>
-    <link href="/2021/05/05/Algorithm/Template/20210506-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(5)-%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
-    <url>/2021/05/05/Algorithm/Template/20210506-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(5)-%E5%B9%B3%E8%A1%A1%E6%A0%91/</url>
+    <link href="/2021/05/05/Algorithm/Template/20210505-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(5)-%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
+    <url>/2021/05/05/Algorithm/Template/20210505-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(5)-%E5%B9%B3%E8%A1%A1%E6%A0%91/</url>
     
     <content type="html"><![CDATA[]]></content>
     
@@ -1415,35 +1415,6 @@
     <title>进阶数据结构-(2)-ST表</title>
     <link href="/2021/05/02/Algorithm/Template/20210502-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(2)-ST%E8%A1%A8/"/>
     <url>/2021/05/02/Algorithm/Template/20210502-0x40-%E8%BF%9B%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(2)-ST%E8%A1%A8/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    <categories>
-      
-      <category>数据结构与算法</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>C++</tag>
-      
-      <tag>Algorithm</tag>
-      
-      <tag>Template</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>字符串-(1)-字符串hash</title>
-    <link href="/2021/05/01/Algorithm/Template/20210301-0x20-%E5%AD%97%E7%AC%A6%E4%B8%B2-(1)-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/"/>
-    <url>/2021/05/01/Algorithm/Template/20210301-0x20-%E5%AD%97%E7%AC%A6%E4%B8%B2-(1)-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/</url>
     
     <content type="html"><![CDATA[]]></content>
     
@@ -1678,6 +1649,35 @@
     <url>/2021/03/02/Algorithm/Template/20210302-0x20-%E5%AD%97%E7%AC%A6%E4%B8%B2-(2)-KMP/</url>
     
     <content type="html"><![CDATA[<p>KMP算法用于<strong>字符串匹配</strong>优化</p><p>假设主串S长度为n， 模式串P长度为m</p><p>暴力做法，时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∗</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">{O(n * m)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></span></p><pre class="language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; 暴力做法 for (int i &#x3D; 1; i &lt;&#x3D; n; i ++) &#123;bool flag &#x3D; true;for (int j &#x3D; 1; j &lt;&#x3D; m; j ++) &#123;        &#x2F;&#x2F; 匹配if (s[i + j - 1] !&#x3D; p[j]) &#123;flag &#x3D; false;            break;&#125;&#125;&#125; </code></pre><p>kmp算法的思想是去预处理模板串 nxt[i] = j</p><p>nxt[i] = j记录的就是当前以i作为后缀末位时，j对应的前缀末位的位置，有使得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mo stretchy="false">[</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo><mo>=</mo><mo>=</mo><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mi>j</mi><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">{p[1, j] == p[i - j + 1, i]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span></span>，这两段前后缀字符串相等，并且不难发现j就是模式串可移动的长度。</p><h3 id="kmp模板"><a class="markdownIt-Anchor" href="#kmp模板"></a> KMP模板</h3><pre class="language-c" data-language="c"><code class="language-c">#include &lt;vector&gt;#include &lt;string&gt;#include &lt;iostream&gt;#include &lt;algorithm&gt;using namespace std;vector&lt;int&gt; res;void kmp(string &amp;s, string &amp;p) &#123;    int n &#x3D; s.size(), m &#x3D; p.size();        if (n &lt; m) return;    &#x2F;&#x2F; 对模式串自身求nxt[]数组的过程    vector&lt;int&gt; nxt(m);    nxt[0] &#x3D; -1;    for (int i &#x3D; 1, j &#x3D; -1; i &lt; m; i ++) &#123;        while (~j &amp;&amp; p[i] !&#x3D; p[j + 1]) j &#x3D; nxt[j];        if (p[i] &#x3D;&#x3D; p[j + 1]) j ++;        nxt[i] &#x3D; j;    &#125;    &#x2F;&#x2F; kmp匹配过程    for (int i &#x3D; 0, j &#x3D; -1; i &lt; n; i ++) &#123;        while (~j &amp;&amp; s[i] !&#x3D; p[j + 1]) j &#x3D; nxt[j];        if (s[i] &#x3D;&#x3D; p[j + 1]) j ++;        if (j &#x3D;&#x3D; m - 1) &#123;            &#x2F;&#x2F; 匹配成功            res.emplace_back(i - m + 1);  &#x2F;&#x2F; 匹配成功时，在主串的起始位置            j &#x3D; nxt[j];        &#125;    &#125;    return;&#125;int main() &#123;    string s; &#x2F;&#x2F; 主串    string p; &#x2F;&#x2F; 模式串    cin &gt;&gt; s &gt;&gt; p;    kmp(s, p);    for(auto r : res) printf(&quot;%d &quot;, r);    return 0;&#125;</code></pre><h3 id="时间复杂度"><a class="markdownIt-Anchor" href="#时间复杂度"></a> 时间复杂度</h3><p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>2</mn><mi>m</mi><mo>+</mo><mn>2</mn><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(2m + 2n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> ，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m + n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p><p><strong>分析</strong>:</p><p>对于求nxt数组的过程</p><p>外层for循环每当i++，j最多跟着一起++; j最多 + m次;</p><p>内层while循环，j 肯定是 &gt;= 0的，j最大为m，所以也最多要 - m次;   因此while循环整个过程最多执行m次</p><p>对于kmp匹配的过程，同理</p><p>外层for循环每当i++，j最多跟着一起++; j最多 + n次;</p><p>内层while循环，j 肯定是 &gt;= 0的，j最大为n，所以也最多要 - n次;   因此while循环整个过程最多执行n次</p><p>所以总共是2m + 2n</p><p><strong>练习eg:</strong></p><p><a href="https://www.acwing.com/problem/content/description/833/">ACwing-831.KMP字符串</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>C++</tag>
+      
+      <tag>Algorithm</tag>
+      
+      <tag>Template</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>字符串-(1)-字符串hash</title>
+    <link href="/2021/03/01/Algorithm/Template/20210301-0x20-%E5%AD%97%E7%AC%A6%E4%B8%B2-(1)-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/"/>
+    <url>/2021/03/01/Algorithm/Template/20210301-0x20-%E5%AD%97%E7%AC%A6%E4%B8%B2-(1)-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/</url>
+    
+    <content type="html"><![CDATA[]]></content>
     
     
     <categories>
