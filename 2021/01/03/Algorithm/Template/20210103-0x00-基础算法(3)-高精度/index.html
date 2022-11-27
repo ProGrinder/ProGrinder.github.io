@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="&#34;auto&#34;"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/default/greycat.ico"><link rel="icon" type="image/png" href="/img/default/greycat.ico"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="theme-color" content="#2f4154"><meta name="description" content=""><meta name="author" content="Grinder"><meta name="keywords" content=""><title>基础算法-(3)-高精度 - Be Grinder,for Better</title><link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="/lib/hint/hint.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-coy.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css"><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1746382_qrhzb41budd.css"><link rel="stylesheet" href="/css/Normalize.css"><link rel="stylesheet" href="/css/GrinderStyle.css"><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 5.2.0"></head><body><header style="height:72vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/">&nbsp;<strong>Grinder's Space</strong>&nbsp;</a> <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/"><i class="iconfont icon-home-fill"></i> 首页</a></li><li class="nav-item"><a class="nav-link" href="/archives/"><i class="iconfont icon-archive-fill"></i> 归档</a></li><li class="nav-item"><a class="nav-link" href="/categories/"><i class="iconfont icon-category-fill"></i> 分类</a></li><li class="nav-item"><a class="nav-link" href="/tags/"><i class="iconfont icon-tags-fill"></i> 标签</a></li><li class="nav-item"><a class="nav-link" href="/about/"><i class="iconfont icon-user-fill"></i> 关于</a></li><li class="nav-item"><a class="nav-link" href="/links/"><i class="iconfont icon-link-fill"></i> 友链</a></li><li class="nav-item" id="search-btn"><a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i class="iconfont icon-search"></i>&nbsp;</a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" href="javascript:">&nbsp;<i class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a></li></ul></div></div></nav><div class="banner intro-2" id="background" parallax="true" style="background:url(/img/default/None.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.07)"><div class="container page-header text-center fade-in-up"><span class="h2" id="subtitle"></span><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2021-01-03 17:00" pubdate>2021年1月3日 下午</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 1.7k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 41 分钟 </span><span id="busuanzi_container_page_pv" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span> 次</span></div></div></div></div></div></header><main><div class="container-fluid"><div class="row"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-md"><div class="container nopadding-md" id="board-ctn"><div class="py-5" id="board"><article class="post-content mx-auto" id="post"><h1 style="display:none">基础算法-(3)-高精度</h1><div class="markdown-body" id="post-body"><h2 id="高精度运算"><a class="markdownIt-Anchor" href="#高精度运算"></a> 高精度运算</h2><p>高精度运算是一种<strong>位运算</strong>的初级应用。</p><p>只有C++需要注意高精度的问题，Java有大整数类<code>BigInteger</code>，Python的范围默认无限大</p><p><strong>Step1</strong>:大整数存储 (用vector)</p><p><strong>Step2</strong>:代码模拟人工计算</p><h3 id="大整数存储"><a class="markdownIt-Anchor" href="#大整数存储"></a> 大整数存储</h3><blockquote><p>倒着表示：[0]下标存储个位=&gt;方便需要进位时，push_back()直接移位覆盖</p></blockquote><pre class="language-c" data-language="c"><code class="language-c">int main() &#123;
+    string a, b;
+    vector&lt;int&gt; A, B;
+    
+    cin &gt;&gt; a &gt;&gt; b; 
+    
+    &#x2F;&#x2F; a &#x3D; &quot;123456&quot;
+    &#x2F;&#x2F; A[6, 5, 4, 3, 2, 1] 
+    for (int i &#x3D; a.size() - 1; i &gt;&#x3D; 0; i --) A.push_back(a[i] - &#39;0&#39;); 
+    for (int i &#x3D; b.size() - 1; i &gt;&#x3D; 0; i --) B.push_back(b[i] - &#39;0&#39;);
+    
+    return 0;
+&#125;</code></pre><h3 id="模拟人工运算"><a class="markdownIt-Anchor" href="#模拟人工运算"></a> 模拟人工运算</h3><p>注意以下默认传入参数A和B都是正整数(不带±号)，也可以理解为绝对值的运算。</p><p><code>|A| + |B|</code>、 <code>|A| - |B|</code>、<code>|A| * |b|</code>、<code>|A| / |b|</code></p><p>模拟运算过程中最主要的是理解<strong>进位/借位机制</strong>的模拟写法</p><h4 id="a-b"><a class="markdownIt-Anchor" href="#a-b"></a> A + B</h4><p>高精度正整数A + 高精度正整数B，返回和C</p><p>加法的位运算结果范围<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>20</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t\in[0,20)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.65418em;vertical-align:-.0391em"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:.2777777777777778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.16666666666666666em"></span><span class="mord">2</span><span class="mord">0</span><span class="mclose">)</span></span></span></span></p><p>再用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.61508em;vertical-align:0"></span><span class="mord mathdefault">t</span></span></span></span>来表示位运算的<strong>进位</strong>:</p><ul><li>当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t \in [0,10)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.65418em;vertical-align:-.0391em"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:.2777777777777778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.16666666666666666em"></span><span class="mord">1</span><span class="mord">0</span><span class="mclose">)</span></span></span></span>，<code>t / 10</code>为0，不进位，当位运算结果<code>t</code>(也可以写成(<code>t % 10</code>))；</li><li>当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>10</mn><mo separator="true">,</mo><mn>20</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t \in [10,20)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.65418em;vertical-align:-.0391em"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:.2777777777777778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mopen">[</span><span class="mord">1</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.16666666666666666em"></span><span class="mord">2</span><span class="mord">0</span><span class="mclose">)</span></span></span></span>，<code>t / 10</code>为1，进位，当位运算结果<code>t % 10</code>.</li></ul><pre class="language-c" data-language="c"><code class="language-c">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+&#x2F;&#x2F; A + B
+vector&lt;int&gt; add(vector&lt;int&gt; &amp;A, vector&lt;int&gt; &amp;B) &#123;
+	vector&lt;int&gt; C;
+    
+    int t &#x3D; 0; &#x2F;&#x2F; 进位
+    for (int i &#x3D; 0; i &lt; A.size() || i &lt; B.size(); i ++) &#123;
+        if (i &lt; A.size()) t +&#x3D; A[i];
+        if (i &lt; B.size()) t +&#x3D; B[i];
+        
+        C.push_back(t % 10);
+        &#x2F;&#x2F; 标记本次运算是否进位，用于下一位运算
+        t &#x2F;&#x3D; 10;
+    &#125;
+    
+    &#x2F;&#x2F; 最高位进位, 如:11 + 99 &#x3D; 110
+    if(t) C.push_back(t); 
+    
+    return C;
+&#125;
+
+int main() &#123;
+    string a, b;
+    vector&lt;int&gt; A, B;
+    
+    cin &gt;&gt; a &gt;&gt; b;
+    
+    for (int i &#x3D; a.size() - 1; i &gt;&#x3D; 0; i --) A.push_back(a[i] - &#39;0&#39;); 
+    for (int i &#x3D; b.size() - 1; i &gt;&#x3D; 0; i --) B.push_back(b[i] - &#39;0&#39;);
+    
+    auto C &#x3D; add(A, B);
+    
+    for (int i &#x3D; C.size() - 1; i &gt;&#x3D; 0; i --) printf(&quot;%d&quot;, C[i]);
+    
+    return 0;
+&#125;</code></pre><h4 id="a-b-2"><a class="markdownIt-Anchor" href="#a-b-2"></a> A - B</h4><p>高精度正整数A - 高精度正整数B，返回差C</p><p>减法的位运算结果范围<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mo>∈</mo><mo stretchy="false">(</mo><mo>−</mo><mn>10</mn><mo separator="true">,</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t\in(-10,10)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.65418em;vertical-align:-.0391em"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:.2777777777777778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.16666666666666666em"></span><span class="mord">1</span><span class="mord">0</span><span class="mclose">)</span></span></span></span></p><p>再用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.61508em;vertical-align:0"></span><span class="mord mathdefault">t</span></span></span></span>来表示位运算的<strong>借位</strong>:</p><ul><li>当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t \in [0,10)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.65418em;vertical-align:-.0391em"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:.2777777777777778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.16666666666666666em"></span><span class="mord">1</span><span class="mord">0</span><span class="mclose">)</span></span></span></span>，<code>t &gt; 0</code>，无需借位，当位运算结果<code>t</code>(也可以写成<code>(t + 10) % 10</code>);</li><li>当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mo>∈</mo><mo stretchy="false">(</mo><mo>−</mo><mn>10</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t \in (-10, 0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.65418em;vertical-align:-.0391em"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:.2777777777777778em"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.16666666666666666em"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span>，<code>t &lt; 0</code>，需要借位，当位运算结果<code>(t + 10) % 10</code>.</li></ul><pre class="language-c" data-language="c"><code class="language-c">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+&#x2F;&#x2F; 判断是否有 A &gt;&#x3D; B
+bool cmp(vector&lt;int&gt; &amp;A, vector&lt;int&gt; &amp;B) &#123;
+    if (A.size() !&#x3D; B.size()) return A.size() &gt; B.size();
+    for (int i &#x3D; A.size() - 1; i &gt;&#x3D; 0; i --) &#123;
+        if(A[i] !&#x3D; B[i]) &#123;
+            return A[i] &gt; B[i];
+        &#125;
+    &#125;
+    
+    return true; 
+&#125;
+
+&#x2F;&#x2F; A - B : 默认传入的A &gt;&#x3D; B, 如果A &lt; B，算 -(sub(B, A))
+vector&lt;int&gt; sub(vector&lt;int&gt; &amp;A, vector&lt;int&gt; &amp;B) &#123;
+    vector&lt;int&gt; C;
+    
+    int t &#x3D; 0; &#x2F;&#x2F; 借位
+    for (int i &#x3D; 0; i &lt; A.size() || i &lt; B.size(); i ++) &#123;
+        if (i &lt; A.size()) t &#x3D; A[i] - t;
+        if (i &lt; B.size()) t -&#x3D; B[i];
+        
+        &#x2F;&#x2F; C.push_back((t + 10) % 10); &#x2F;&#x2F; 可以从if-else中提出来
+        &#x2F;&#x2F; 标记本次运算是否借位，用于下一位运算
+        if (t &gt; 0) &#123;
+            C.push_back((t + 10) % 10);
+            t &#x3D; 1;
+        &#125;
+        else &#123;
+            C.push_back(t); &#x2F;&#x2F; 也可以写成C.push_back((t + 10) % 10);
+            t &#x3D; 0;
+        &#125;
+    &#125;
+    
+    &#x2F;&#x2F; 去掉高位的多个0[只保留个位的0], 如:123 - 120 &#x3D; 003
+    while (C.size() &gt; 1 &amp;&amp; C.back() &#x3D;&#x3D; 0) C.pop_back();
+    
+    return C;
+&#125;
+
+int main() &#123;
+    string a, b;
+    vector&lt;int&gt; A, B;
+    
+    cin &gt;&gt; a &gt;&gt; b;
+    
+    for (int i &#x3D; a.size() - 1; i &gt;&#x3D; 0; i --) A.push_back(a[i] - &#39;0&#39;); 
+    for (int i &#x3D; b.size() - 1; i &gt;&#x3D; 0; i --) B.push_back(b[i] - &#39;0&#39;);
+    
+    if (cmp(A, B)) &#123;
+        &#x2F;&#x2F; A &gt; B
+        auto C &#x3D; sub(A, B);
+        for (int i &#x3D; C.size() - 1; i &gt;&#x3D; 0; i --) printf(&quot;%d&quot;, C[i]);
+	&#125; 
+    else &#123;
+        &#x2F;&#x2F; B &gt; A
+        auto C &#x3D; sub(B, A);
+        printf(&quot;-&quot;);
+        for (int i &#x3D; C.size() - 1; i &gt;&#x3D; 0; i --) printf(&quot;%d&quot;, C[i]);
+	&#125;
+    
+    return 0;
+&#125;</code></pre><h4 id="a-b-3"><a class="markdownIt-Anchor" href="#a-b-3"></a> A * b</h4><p>高精度正整数A * 低精度正整数b，返回乘积C</p><p>思路和A + B差不多</p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+&#x2F;&#x2F; A * b
+vector&lt;int&gt; mul(vector&lt;int&gt; &amp;A, int b) &#123;
+    vector&lt;int&gt; C;
+    
+    int t &#x3D; 0;
+    &#x2F;&#x2F; 当进位t为0时停止循环，可以省去后面的[最高位进位]和[去掉高位的多个0]的操作
+    &#x2F;&#x2F; for(int i &#x3D; 0; i &lt; A.size() || t; i ++) ，
+    for(int i &#x3D; 0; i &lt; A.size(); i ++) &#123;
+        t +&#x3D; A[i] * b;
+        C.push_back(t % 10);
+        t &#x2F;&#x3D; 10;
+	&#125;
+    
+    &#x2F;&#x2F; 最高位进位
+    if(t) C.push_back(t);
+    &#x2F;&#x2F; 去掉高位的多个0[只保留个位的0], 如:12345 * 0 &#x3D; 00000;
+    while(C.size() &gt; 1 &amp;&amp; C.back() &#x3D;&#x3D; 0) C.pop_back();
+    
+    return C;
+&#125;
+
+int main() &#123;
+    string a;
+    int b;
+    
+    cin &gt;&gt; a &gt;&gt; b;
+    
+    vector&lt;int&gt; A;
+    for (int i &#x3D; a.size() - 1; i &gt;&#x3D; 0; i --) A.push_back(a[i] - &#39;0&#39;);
+    
+    auto C &#x3D; mul(A, b);
+        
+    for (int i &#x3D; C.size() - 1; i &gt;&#x3D; 0; i --) printf(&quot;%d&quot;, C[i]);
+    
+    return 0;
+&#125;</code></pre><h4 id="a-b-4"><a class="markdownIt-Anchor" href="#a-b-4"></a> A / b</h4><p>高精度正整数A / 低精度正整数b， 返回商C和余数r</p><p>注意人工算除法是从最高位开始除的:<br>因此模拟时for循环要从后往前，并且结束后为了保持大整数存储的一致性，要reverse()反转C</p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+&#x2F;&#x2F; A &#x2F; b, 商是C, 余数是r
+vector&lt;int&gt; div(vector&lt;int&gt; &amp;A, int b, int &amp;r) &#123;
+    vector&lt;int&gt; C;
+    
+    r &#x3D; 0;&#x2F;&#x2F; 因为C++函数只能返回一个值，所以使用传引用&amp;r来影响r的值
+    for (int i &#x3D; A.size() - 1; i &gt;&#x3D; 0; i --) &#123;
+        r &#x3D; r * 10 + A[i];
+        C.push_back(r &#x2F; b);
+        r %&#x3D; b;
+    &#125;
+    
+    reverse(C.begin(), C.end());
+    &#x2F;&#x2F; 去掉高位的多个0[只保留个位的0], 如:100 &#x2F; 19 &#x3D; 005...5
+    while(C.size() &gt; 1 &amp;&amp; C.back() &#x3D;&#x3D; 0) C.pop_back();
+    
+    return C;
+&#125;
+
+int main() &#123;
+    string a;
+    int b;
+    
+    cin &gt;&gt; a &gt;&gt; b;
+    
+    vector&lt;int&gt; A;
+    for (int i &#x3D; a.size() - 1; i &gt;&#x3D; 0; i --) A.push_back(a[i] - &#39;0&#39;);
+    
+    int r;&#x2F;&#x2F;余数 
+    auto C &#x3D; div(A, b, r);
+    
+    &#x2F;&#x2F; 商
+    for (int i &#x3D; C.size() - 1; i &gt;&#x3D; 0; i --) printf(&quot;%d&quot;, C[i]);
+    
+    cout &lt;&lt; endl;
+    cout &lt;&lt; r &lt;&lt; endl;
+    
+    return 0;
+&#125;</code></pre><h4 id="时间复杂度分析"><a class="markdownIt-Anchor" href="#时间复杂度分析"></a> 时间复杂度分析</h4><p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0"></span><span class="mord"><span class="mord mathdefault">n</span></span></span></span></span>取<code>max(A.size(), B.size())</code></p><p><strong>A + B</strong> : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p><p><strong>A - B</strong> : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p><p><strong>A * b</strong> : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p><p><strong>A / b</strong> : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>， 尽管有reverse()函数，但是reverse也是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>的</p></div><hr><div><div class="post-metas mb-3"><div class="post-meta mr-3"><i class="iconfont icon-category"></i> <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/C/">C++</a> <a class="hover-with-bg" href="/tags/Algorithm/">Algorithm</a> <a class="hover-with-bg" href="/tags/Template/">Template</a></div></div><p class="note note-warning">本博客所有文章均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-NC-SA 4.0 协议</a> ，禁止商用，转载请注明出处！</p><div class="post-prevnext row"><article class="post-prev col-6"><a href="/2021/01/04/Algorithm/Template/20210104-0x00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95(4)-%E5%89%8D%E7%BC%80%E5%92%8C&amp;%E5%B7%AE%E5%88%86/"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">基础算法-(4)-前缀和&差分</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/2021/01/02/Algorithm/Template/20210102-0x00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95-(2)-%E4%BA%8C%E5%88%86/"><span class="hidden-mobile">基础算法-(2)-二分搜索</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article class="comments" id="comments"><div id="vcomments"></div><script type="text/javascript">function loadValine(){addScript("https://cdn.staticfile.org/valine/1.4.14/Valine.min.js",(function(){new Valine({el:"#vcomments",app_id:"zFsXUmmjrQgI8Mwc4q1hoeFX-gzGzoHsz",app_key:"lhfQutIrdSGngahzOrpkaKBU",placeholder:"说点什么吧！~(支持Markdown语法)",path:window.location.pathname,avatar:"retro",meta:["nick","mail","link"],pageSize:"10",lang:"zh-CN",highlight:!0,recordIP:!1,serverURLs:""})}))}waitElementVisible("vcomments",loadValine)</script><noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a></noscript></article></article></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div id="tocbot"></div></div></div></div></div></main><a id="scroll-top-button" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div><div id="aplayer"></div><script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css"><script type="text/javascript">var oldLoadAp=window.onload;window.onload=function(){oldLoadAp&&oldLoadAp(),new APlayer({container:document.getElementById("aplayer"),fixed:!0,autoplay:!1,loop:"all",order:"list",theme:"#b7daff",preload:"auto",lrcType:3,audio:[{name:"Reforget",artist:"Lauv",url:"/songs/Reforget.wav",cover:"/img/songs/Cover_Reforget.jpg",lrc:"/songs/lrc/Reforget.lrc"},{name:"Saint",artist:"Travis Scott & Quavo",url:"/songs/Saint.wav",cover:"/img/songs/Cover_Saint.jpg",lrc:"/songs/lrc/Saint.lrc"},{name:"Antisocial",artist:"Travis Scott & Ed Sheeran",url:"/songs/Antisocial.wav",cover:"/img/songs/Cover_Antisocial.jpg",lrc:"/songs/lrc/Antisocial.lrc"},{name:"Champion",artist:"Travis Scott & Nav",url:"/songs/Champion.wav",cover:"/img/songs/Cover_Champion.jpg",lrc:"/songs/lrc/Champion.lrc"},{name:"Smile",artist:"The Weekend & Juice WRLD",url:"/songs/Smile.wav",cover:"/img/songs/Cover_Smile.jpg",lrc:"/songs/lrc/Smile.lrc"},{name:"Starboy",artist:"The Weekend",url:"/songs/Starboy.wav",cover:"/img/songs/Cover_Starboy.jpg",lrc:"/songs/lrc/Starboy.lrc"},{name:"Sidewalks",artist:"The Weekend",url:"/songs/Sidewalks.wav",cover:"/img/songs/Cover_Sidewalks.jpg",lrc:"/songs/lrc/Sidewalks.lrc"},{name:"Reminder",artist:"The Weekend",url:"/songs/Reminder.wav",cover:"/img/songs/Cover_Reminder.jpg",lrc:"/songs/lrc/Reminder.lrc"},{name:"Die For You",artist:"The Weekend",url:"/songs/Die For You.wav",cover:"/img/songs/Cover_Die For You.jpg",lrc:"/songs/lrc/Die For You.lrc"},{name:"Pray For Me",artist:"The Weekend & Kendrick Lamar",url:"/songs/Pray For Me.wav",cover:"/img/songs/Cover_Pray For Me.jpg",lrc:"/songs/lrc/Pray For Me.lrc"}]})}</script><footer class="mt-5"><div class="text-center py-3"><div><br>Powered by: <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> Theme: <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a></div><div class="statistics"><span id="busuanzi_container_site_pv" style="display:none">总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span><span id="busuanzi_container_site_uv" style="display:none">总访客数 <span id="busuanzi_value_site_uv"></span> 人</span></div></div></footer><script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script><script src="/js/debouncer.js"></script><script src="/js/main.js"></script><script src="/js/lazyload.js"></script><script src="https://cdn.staticfile.org/prism/1.21.0/components/prism-core.min.js"></script><script src="https://cdn.staticfile.org/prism/1.21.0/plugins/autoloader/prism-autoloader.min.js"></script><script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js"></script><script src="/js/clipboard-use.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js"></script><script>$(document).ready((function(){var t=$("#board-ctn").offset().top;tocbot.init({tocSelector:"#tocbot",contentSelector:"#post-body",headingSelector:"h1,h2,h3,h4,h5,h6",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",collapseDepth:0,scrollSmooth:!0,headingsOffset:-t}),$(".toc-list-item").length>0&&$("#toc").css("visibility","visible")}))</script><script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script><script>var typed=new Typed("#subtitle",{strings:["  ","基础算法-(3)-高精度&nbsp;"],cursorChar:"_",typeSpeed:72,loop:!1});typed.stop(),$(document).ready((function(){$(".typed-cursor").addClass("h2"),typed.start()}))</script><script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script><script>anchors.options={placement:"right",visible:"hover"};var el="h1,h2,h3,h4,h5,h6".split(","),res=[];for(item of el)res.push(".markdown-body > "+item);anchors.add(res.join(", "))</script><script src="/js/local-search.js"></script><script>var path="/local-search.xml",inputArea=document.querySelector("#local-search-input");inputArea.onclick=function(){searchFunc(path,"local-search-input","local-search-result"),this.onclick=null}</script><script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"><script>$("#post img:not(.no-zoom img, img[no-zoom]), img[zoom]").each((function(){var t=document.createElement("a");$(t).attr("data-fancybox","images"),$(t).attr("href",$(this).attr("src")),$(this).wrap(t)}))</script><link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css"><script defer>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?f9aad97d2fdeed725d5d52997eaebaa9";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script></body></html>

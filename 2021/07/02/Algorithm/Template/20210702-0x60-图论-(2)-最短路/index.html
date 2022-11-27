@@ -1,0 +1,524 @@
+<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="&#34;auto&#34;"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/default/greycat.ico"><link rel="icon" type="image/png" href="/img/default/greycat.ico"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="theme-color" content="#2f4154"><meta name="description" content=""><meta name="author" content="Grinder"><meta name="keywords" content=""><title>0x60图论-(2)-最短路 - Be Grinder,for Better</title><link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="/lib/hint/hint.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-coy.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css"><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1746382_qrhzb41budd.css"><link rel="stylesheet" href="/css/Normalize.css"><link rel="stylesheet" href="/css/GrinderStyle.css"><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 5.2.0"></head><body><header style="height:72vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/">&nbsp;<strong>Grinder's Space</strong>&nbsp;</a> <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/"><i class="iconfont icon-home-fill"></i> 首页</a></li><li class="nav-item"><a class="nav-link" href="/archives/"><i class="iconfont icon-archive-fill"></i> 归档</a></li><li class="nav-item"><a class="nav-link" href="/categories/"><i class="iconfont icon-category-fill"></i> 分类</a></li><li class="nav-item"><a class="nav-link" href="/tags/"><i class="iconfont icon-tags-fill"></i> 标签</a></li><li class="nav-item"><a class="nav-link" href="/about/"><i class="iconfont icon-user-fill"></i> 关于</a></li><li class="nav-item"><a class="nav-link" href="/links/"><i class="iconfont icon-link-fill"></i> 友链</a></li><li class="nav-item" id="search-btn"><a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i class="iconfont icon-search"></i>&nbsp;</a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" href="javascript:">&nbsp;<i class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a></li></ul></div></div></nav><div class="banner intro-2" id="background" parallax="true" style="background:url(/img/default/None.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.07)"><div class="container page-header text-center fade-in-up"><span class="h2" id="subtitle"></span><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2021-07-02 17:00" pubdate>2021年7月2日 下午</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 3.1k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 72 分钟 </span><span id="busuanzi_container_page_pv" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span> 次</span></div></div></div></div></div></header><main><div class="container-fluid"><div class="row"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-md"><div class="container nopadding-md" id="board-ctn"><div class="py-5" id="board"><article class="post-content mx-auto" id="post"><h1 style="display:none">0x60图论-(2)-最短路</h1><div class="markdown-body" id="post-body"><p><strong>源点</strong>：图中的起点</p><p><strong>汇点</strong>：图中的终点</p><p>需要做到: 输出参数 start, 然后返回参数<code>vector&lt;int&gt;</code>返回每个点到起点的最短路径！然后选用即可。</p><h2 id="单源最短路"><a class="markdownIt-Anchor" href="#单源最短路"></a> 单源最短路</h2><p>单源，顾名思义就是图中只有一个起点。</p><p>单源最短路问题，需要记录额外两个变量:</p><pre class="language-c" data-language="c"><code class="language-c">int dist[N];      &#x2F;&#x2F; 当前结点到源点的最短路径距离
+bool visited[N];  &#x2F;&#x2F; 当前结点到源点的最短路径是否已经确定</code></pre><h3 id="所有边权都是正数"><a class="markdownIt-Anchor" href="#所有边权都是正数"></a> 所有边权都是正数</h3><p>Dijkstra算法是基于贪心的思想，适用于求所有边权都是正数的最短路径。</p><p><strong>step1</strong>：初始化距离：起点到起点的距离为0，其它点到起点的距离为正无穷。</p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;cstring&gt;
+&#x2F;&#x2F; 初始化距离
+memset(dist, 0x3f, sizeof dist);
+dist[1] &#x3D; 0;</code></pre><p><strong>step2</strong>： 循环松弛，每次确定一个点到起点的最短路，在没有确定的点中选取一个距离起点最短的点加入到当前路径。然后用该点去更新其它未确定的点到起点的距离。</p><p>总结一下，Dijkstra算法的流程就是，不断取出<strong>离顶点最近</strong>而<strong>没有被访问过</strong>的点，松弛它和它能到达的所有点。</p><h4 id="朴素版dijkstraon2"><a class="markdownIt-Anchor" href="#朴素版dijkstraon2"></a> 朴素版Dijkstra(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">{O(n^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-.25em"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.8141079999999999em"><span style="top:-3.063em;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>))</h4><p>适用于<strong>稠密图</strong>，用邻接矩阵存储。</p><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/851/">AcWing849.Dijkstra求最短路 I</a></p><p>算法模板:</p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+const int N &#x3D; 500 + 7;
+
+int graph[N][N];
+int dist[N];
+bool visited[N];
+
+int n, m;
+
+int Dijkstra() &#123;
+    &#x2F;&#x2F; 初始化距离
+    memset(dist, 0x3f, sizeof dist);
+    dist[1] &#x3D; 0;
+    
+    for (int i &#x3D; 0; i &lt; n; i ++) &#123;
+        &#x2F;&#x2F; 初始化t为-1;
+        int t &#x3D; -1;
+        
+        &#x2F;&#x2F; 选择t &#x3D; dist[j]最小的边
+        for (int j &#x3D; 1; j &lt;&#x3D; n; j ++) &#123;
+            if(!visited[j] &amp;&amp; (t &#x3D;&#x3D; -1 || dist[t] &gt; dist[j])) &#123;
+                t &#x3D; j;
+            &#125;
+        &#125;
+        &#x2F;&#x2F; t加入已访问集合
+        visited[t] &#x3D; true;
+        
+        &#x2F;&#x2F; 用t更新其它点到源点的距离
+        for (int j &#x3D; 1; j &lt;&#x3D; n; j ++) &#123;
+            if(!visited[j]) &#123;
+                dist[j] &#x3D; min(dist[j], dist[t] + graph[t][j]);
+            &#125;
+        &#125;
+    &#125;
+    
+    &#x2F;&#x2F; 4个0x3f
+    if (dist[n] &#x3D;&#x3D; 0x3f3f3f3f) return -1;
+    
+    return dist[n];
+&#125;
+
+int main() &#123;
+    
+    cin &gt;&gt; n &gt;&gt; m;
+    
+    memset(graph, 0x3f, sizeof graph);
+
+    while (m --) &#123;
+        int u, v, d;
+        scanf(&quot;%d%d%d&quot;, &amp;u, &amp;v, &amp;d);
+        &#x2F;&#x2F; 两点之间如果存在多条重边，只保留距离最短的那条
+        graph[u][v] &#x3D; min(graph[u][v], d);
+        &#x2F;&#x2F; 如果存在自环，其距离为正显然不用管
+    &#125;
+    
+    int t &#x3D; Dijkstra();
+    cout &lt;&lt; t &lt;&lt; endl;
+    
+    return 0;
+&#125;</code></pre><h4 id="堆优化版dijkstraomlogn"><a class="markdownIt-Anchor" href="#堆优化版dijkstraomlogn"></a> 堆优化版Dijkstra(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">{O(mlog(n)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:.01968em">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:.03588em">g</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span>))</h4><p>适用于稀疏图，用邻接表存储。</p><p><strong>每次选取一个距离起点最短的点</strong>⇔<strong>多次取最小，然后删除当前最小</strong>⇔<strong>小根堆</strong></p><p>可以用手写堆或者优先队列的实现</p><ul><li><p>手写堆的时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">{O(mlog(n))}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:.01968em">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:.03588em">g</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span></p></li><li><p>优先队列的时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">{O(mlog(m))}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:.01968em">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:.03588em">g</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span>[但是m和n是同一个数量级，所以没关系]</p><blockquote><p>为什么是优先队列是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">{O(mlog(m))}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:.01968em">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:.03588em">g</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span>？</p><pre class="language-c" data-language="c"><code class="language-c">&gt;if (dist[j] &gt; distance + w[i]) &#123;
+  	&#x2F;&#x2F; 每当距离变小则入堆，因此最坏情况是递减的
+      dist[j] &#x3D; distance + w[i];
+      heap.push(&#123;dist[j], j&#125;);
+&gt;&#125;</code></pre></blockquote></li></ul><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/852/">AcWing850.Dijkstra求最短路 II</a></p><p>算法模板:</p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;queue&gt;     &#x2F;&#x2F; priority_queue&lt;&gt;
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;   &#x2F;&#x2F; memset()
+#include &lt;algorithm&gt; 
+
+using namespace std;
+
+&#x2F;&#x2F; &lt;距离, 节点编号&gt;
+typedef pair&lt;int, int&gt; PII;
+struct Edge&#123;
+    int to;
+    int w;
+    int nxt;
+&#125;;
+
+const int N &#x3D; 150000 + 7;
+const int M &#x3D; 150000 + 7;
+
+&#x2F;&#x2F; 邻接表存储图
+int head[N];
+Edge edge[M];
+int idx;
+&#x2F;&#x2F; 最短路记录
+int dist[N];
+bool visited[N];
+
+int n, m;
+
+inline void add(int from, int to, int w) &#123;
+    edge[idx].to &#x3D; to;
+    edge[idx].w &#x3D; w;
+    edge[idx].nxt &#x3D; head[from];
+    head[from] &#x3D; idx ++;
+&#125;
+
+int Heap_Dijkstra() &#123;
+    &#x2F;&#x2F; step1: 初始化距离
+    memset(dist, 0x3f, sizeof dist);
+    dist[1] &#x3D; 0;
+    
+    &#x2F;&#x2F; 创建小根堆
+    priority_queue&lt;PII, vector&lt;PII&gt;, greater&lt;PII&gt;&gt; heap;
+    heap.push(&#123;0, 1&#125;);
+    
+    while (!heap.empty()) &#123;
+        &#x2F;&#x2F; 取出队头
+        auto t &#x3D; heap.top(); heap.pop();
+        
+        int ind &#x3D; t.second;
+        int distance &#x3D; t.first;   &#x2F;&#x2F; 其实distance &#x3D;&#x3D; dist[ind]
+        &#x2F;&#x2F; 跳过
+        if (visited[ind]) continue;
+        visited[ind] &#x3D; true;
+        &#x2F;&#x2F; 遍历队头结点，更新该节点指向的所有结点的dist[]
+        for (int i &#x3D; head[ind]; i !&#x3D; -1; i &#x3D; edge[i].nxt) &#123;
+            int j &#x3D; edge[i].to;
+            if (dist[j] &gt; distance + edge[i].w) &#123;
+                dist[j] &#x3D; distance + edge[i].w;    
+                &#x2F;&#x2F; 入堆 &#x2F;&#x2F; 这层if(!visited[j])可以不要
+                if (!visited[j]) &#123;
+                    heap.push(&#123;dist[j], j&#125;);                   
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    
+    if (dist[n] &#x3D;&#x3D; 0x3f3f3f3f) return -1;
+    
+    return dist[n];
+&#125;
+
+
+int main() &#123;
+    &#x2F;&#x2F; 初始化
+    memset(head, -1, sizeof head);
+    
+    cin &gt;&gt; n &gt;&gt; m;
+
+    while (m --) &#123;
+        int u, v, w;
+        scanf(&quot;%d%d%d&quot;, &amp;u, &amp;v, &amp;w);
+		&#x2F;&#x2F; add
+        add (u, v, w);
+    &#125;
+
+    cout &lt;&lt; Heap_Dijkstra() &lt;&lt; endl;
+
+    return 0;
+&#125;</code></pre><hr><h3 id="存在边权是负数"><a class="markdownIt-Anchor" href="#存在边权是负数"></a> 存在边权是负数</h3><h4 id="bellman-fordomn"><a class="markdownIt-Anchor" href="#bellman-fordomn"></a> Bellman-Ford(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">{O(mn)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span>))</h4><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/855/">AcWing853. 有边数限制的最短路</a></p><p><strong>普通版</strong></p><p>算法模板:</p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+struct Edge&#123;
+    int u;
+    int v;
+    int w;
+&#125;;
+
+const int N &#x3D; 500 + 7;
+const int M &#x3D; 10000 + 7;
+
+&#x2F;&#x2F; 图
+Edge edge[M];
+
+int dist[N];
+int backup[N];  &#x2F;&#x2F; dist[]备份
+
+int n, m, k;
+
+int Bellman_Ford(int k) &#123;
+    &#x2F;&#x2F; 初始化距离
+    memset(dist, 0x3f, sizeof dist);
+    dist[1] &#x3D; 0;
+    
+    for (int i &#x3D; 0; i &lt; k; i ++) &#123;
+        &#x2F;&#x2F; 备份
+        memcpy(backup, dist, sizeof dist);
+        &#x2F;&#x2F; 遍历图中所有边
+        for (int j &#x3D; 0; j &lt; m; j ++) &#123;
+            int u &#x3D; edge[j].u;
+            int v &#x3D; edge[j].v;
+            int w &#x3D; edge[j].w;            
+            &#x2F;&#x2F; 使用backup[]更新,而不是使用dist[]
+            dist[v] &#x3D; min(dist[v], backup[u] + w);
+        &#125;
+    &#125;
+    
+    &#x2F;&#x2F; 存在负权边，使得dist[n]更新为小于INF的某个数
+    if (dist[n] &gt; 0x3f3f3f3f &#x2F; 2) return -1;
+    
+    return dist[n];
+&#125;
+
+
+int main() &#123;
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;
+    
+    for (int i &#x3D; 0; i &lt; m; i ++) &#123;
+        int u, v, w;
+        scanf(&quot;%d%d%d&quot;, &amp;u, &amp;v, &amp;w);
+        edge[i] &#x3D; &#123;u, v, w&#125;;
+    &#125;
+    
+    int res &#x3D; Bellman_Ford(k);
+    
+    if (dist[n] &gt; 0x3f3f3f3f &#x2F; 2) puts(&quot;impossible&quot;);
+    else cout &lt;&lt; res &lt;&lt; endl;
+        
+    return 0;
+&#125;</code></pre><p><strong>链式前向星版</strong></p><p>我认为虽然该模板图的遍历循环难写一些，但是链式前向星这个结构更有通用性。</p><p>算法模板:</p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+struct Edge&#123;
+    int to;
+    int w;
+    int nxt;
+&#125;;
+
+const int N &#x3D; 500 + 7;
+const int M &#x3D; 10000 + 7;
+
+&#x2F;&#x2F; 图
+int head[N];
+Edge edge[M];
+int idx;
+&#x2F;&#x2F; 最短路
+int dist[N];
+int backup[N];  &#x2F;&#x2F; dist[]备份
+
+int n, m, k;
+
+inline void add(int from, int to, int w) &#123;
+    edge[idx].to &#x3D; to;
+    edge[idx].w &#x3D; w;
+    edge[idx].nxt &#x3D; head[from];
+    head[from] &#x3D; idx ++;
+&#125;
+
+int Bellman_Ford(int k) &#123;
+    &#x2F;&#x2F; 初始化距离
+    memset(dist, 0x3f, sizeof dist);
+    dist[1] &#x3D; 0;
+     
+    for (int e &#x3D; 0; e &lt; k; e ++) &#123;
+        &#x2F;&#x2F; 备份
+        memcpy(backup, dist, sizeof dist);
+        &#x2F;&#x2F; 遍历图中所有边
+        for (int t &#x3D; 1; t &lt;&#x3D; n; t ++) &#123;
+            for (int i &#x3D; head[t]; i !&#x3D; -1; i &#x3D; edge[i].nxt) &#123;
+                int j &#x3D; edge[i].to;
+                &#x2F;&#x2F; 使用backup[]更新,而不是使用dist[]
+                dist[j] &#x3D; min(dist[j], backup[t] + edge[i].w);
+            &#125;
+        &#125;
+    &#125;
+       
+    &#x2F;&#x2F; 存在负权边
+    if (dist[n] &gt; 0x3f3f3f3f &#x2F; 2) return -1;
+    
+    return dist[n];
+&#125;
+
+
+int main() &#123;
+    memset (head, -1, sizeof head);
+    
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;
+    
+    while (m --)&#123;
+        int u, v, w;
+        scanf(&quot;%d%d%d&quot;, &amp;u, &amp;v, &amp;w);
+
+        add(u, v, w);
+    &#125;
+    
+    int res &#x3D; Bellman_Ford(k);
+    
+    if (dist[n] &gt; 0x3f3f3f3f &#x2F; 2) puts(&quot;impossible&quot;);
+    else cout &lt;&lt; res &lt;&lt; endl;
+    
+    return 0;
+&#125;</code></pre><h4 id="spfaom"><a class="markdownIt-Anchor" href="#spfaom"></a> SPFA(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">{O(m)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></span>))</h4><p>长得很像Dijkstra，但是是队列优化版的Bellman-Ford</p><p>SPFA不但可以用来求最短路，还可以用来判断图中有无负环。</p><p><strong>SPFA求最短路</strong></p><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/853/">Acwing851. spfa求最短路</a></p><p>算法模板：</p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;queue&gt;
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+&#x2F;&#x2F; typedef pair&lt;int, int&gt; PII;
+struct Edge&#123;
+    int to;
+    int w;
+    int nxt;
+&#125;;
+
+const int N &#x3D; 1e5 + 7;
+const int M &#x3D; 1e5 + 7;
+
+&#x2F;&#x2F; 图
+int head[N];
+Edge edge[M];
+int idx;
+
+&#x2F;&#x2F; 最短路
+int dist[N];
+bool inqueue[N];  &#x2F;&#x2F; visited[概念改变]
+
+int n, m;
+
+inline void add(int from, int to, int w) &#123;
+    edge[idx].to &#x3D; to;
+    edge[idx].w &#x3D; w;
+    edge[idx].nxt &#x3D; head[from];
+    head[from] &#x3D; idx ++;
+&#125;
+
+int SPFA() &#123;
+    memset(dist, 0x3f, sizeof dist);
+    dist[1] &#x3D; 0;
+
+    queue&lt;int&gt; que;
+    que.push(1);
+    inqueue[1] &#x3D; true;   &#x2F;&#x2F;存的是当前该点是否在队列当中，防止队列中存重复的点
+
+    while (!que.empty()) &#123;
+        &#x2F;&#x2F; 取出队头
+        int t &#x3D; que.front(); que.pop();
+        &#x2F;&#x2F; 标记不在队列中
+        inqueue[t] &#x3D; false;
+
+        for (int i &#x3D; head[t]; i !&#x3D; -1; i &#x3D; edge[i].nxt) &#123;
+            int j &#x3D; edge[i].to;
+            if (dist[j] &gt; dist[t] + edge[i].w) &#123;
+                dist[j] &#x3D; dist[t] + edge[i].w;
+                &#x2F;&#x2F; 不在队列中才加入
+                if (!inqueue[j]) &#123;
+                    que.push(j);
+                    inqueue[j] &#x3D; true;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    if (dist[n] &#x3D;&#x3D; 0x3f3f3f3f) return -1;
+
+    return dist[n];
+&#125;
+
+int main() &#123;
+    &#x2F;&#x2F; 初始化head
+    memset(head, -1, sizeof head);
+
+    cin &gt;&gt; n &gt;&gt; m;
+
+    while (m --) &#123;
+        int u, v, w;
+        scanf(&quot;%d%d%d&quot;, &amp;u, &amp;v, &amp;w);
+
+        add(u, v, w);
+    &#125;
+
+    int res &#x3D; SPFA();
+
+    if (dist[n] &#x3D;&#x3D; 0x3f3f3f3f) puts(&quot;impossible&quot;);
+    else cout &lt;&lt; res &lt;&lt; endl;
+
+    return 0;
+&#125;</code></pre><p><strong>SPFA判断负环</strong></p><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/854/">Acwing852. spfa判断负环</a></p><p>算法模板:</p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;queue&gt;
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+struct Edge &#123;
+    int to;
+    int w;
+    int nxt;
+&#125;;
+
+const int N &#x3D; 2000 + 7;
+const int M &#x3D; 10000 + 7;
+
+&#x2F;&#x2F; 图
+int head[N];
+Edge edge[M];
+int idx;
+&#x2F;&#x2F; 最短路
+int dist[N];
+int cnt[N];  &#x2F;&#x2F; cnt[]记录dist[]更新次数
+bool inqueue[N];
+
+int n, m;
+
+inline void add(int from, int to, int w) &#123;
+    edge[idx].to &#x3D; to;
+    edge[idx].w &#x3D; w;
+    edge[idx].nxt &#x3D; head[from];
+    head[from] &#x3D; idx ++;
+&#125;
+
+bool SPFA() &#123;
+    memset(dist, 0x3f, sizeof dist);
+    dist[1] &#x3D; 0;
+    
+    queue&lt;int&gt; que;
+    &#x2F;&#x2F; que.push(1);
+    &#x2F;&#x2F; inqueue[1] &#x3D; true;
+    &#x2F;&#x2F; 可能这个负环从源点1是到不了的，因此初始时要把所有点都放进que
+    for (int i &#x3D; 1; i &lt;&#x3D; n; i ++) &#123;
+        que.push(i);
+        inqueue[i] &#x3D; true;
+    &#125;
+    
+    while (!que.empty()) &#123;
+        int t &#x3D; que.front();
+        que.pop();
+        
+        inqueue[t] &#x3D; false;
+        
+        for (int i &#x3D; head[t]; i !&#x3D; -1; i &#x3D; edge[i].nxt) &#123;
+            int j &#x3D; edge[i].to;
+            if (dist[j] &gt; dist[t] + edge[i].w) &#123;
+                dist[j] &#x3D; dist[t] + edge[i].w;
+                cnt[j] &#x3D; cnt[t] + 1;
+                &#x2F;&#x2F; dist[]更新次数 &gt;&#x3D; n，说明存在负环
+                if (cnt [j] &gt;&#x3D; n) return true;
+                if (!inqueue[j]) &#123;
+                    que.push(j);
+                    inqueue[j] &#x3D; true;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    
+    return false;
+&#125;
+
+int main() &#123;
+    memset(head, -1, sizeof head);
+    
+    cin &gt;&gt; n &gt;&gt; m;
+    
+    while (m --) &#123;
+        int u, v, w;
+        scanf(&quot;%d%d%d&quot;, &amp;u, &amp;v, &amp;w);
+        add(u, v, w);
+    &#125;
+    
+    if(SPFA()) puts(&quot;Yes&quot;);
+    else puts(&quot;No&quot;);
+    
+    return 0;
+&#125;</code></pre><h2 id="多源最短路"><a class="markdownIt-Anchor" href="#多源最短路"></a> 多源最短路</h2><h4 id="floydon3"><a class="markdownIt-Anchor" href="#floydon3"></a> Floyd(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">{O(n^3)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-.25em"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.8141079999999999em"><span style="top:-3.063em;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>))</h4><p>Floyd算法本质上是一个<strong>动态规划</strong>的思想，每一次循环更新<strong>经过前k个节点，i到j的最短路径</strong>。</p><p>dist[k, i , j ]表示从点i开始，只经过1~k这些中间点，到点j的最短距离</p><p>这甚至不需要特意存图，因为dist数组本身就可以从邻接矩阵拓展而来。初始化的时候，我们把每个点<strong>到自己的距离</strong>设为0，每新增一条边，就把从这条边的起点到终点的距离设为此边的<strong>边权</strong>（类似于邻接矩阵）。其他距离初始化为<strong>INF</strong>（一个超过边权数据范围的大整数，注意防止溢出）。</p><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/856/">AcWing854.Floyd求最短路</a></p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+const int N &#x3D; 200 + 7;
+const int M &#x3D; 20000 + 7;
+const int INF &#x3D; 0x3f3f3f3f;
+
+int dist[N][N];
+
+int n, m;
+int Q; &#x2F;&#x2F; Q表示询问次数
+
+void Floyd() &#123;
+    for (int k &#x3D; 1; k &lt;&#x3D; n; k ++) &#123;
+        for (int i &#x3D; 1; i &lt;&#x3D; n; i ++) &#123;
+            for (int j &#x3D; 1; j &lt;&#x3D; n; j ++) &#123;
+                dist[i][j] &#x3D; min(dist[i][j], dist[i][k] + dist[k][j]);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+int main() &#123;
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; Q;
+    
+    &#x2F;&#x2F; 邻接矩阵初始化
+    for (int i &#x3D; 1; i &lt;&#x3D; n; i ++) &#123;
+        for (int j &#x3D; 1; j &lt;&#x3D; n; j ++) &#123;
+            if(i &#x3D;&#x3D; j) dist[i][j] &#x3D; 0;
+            else dist[i][j] &#x3D; INF;
+        &#125;
+    &#125;
+    
+    while (m --) &#123;
+        int u, v, w;
+        scanf(&quot;%d%d%d&quot;, &amp;u, &amp;v, &amp;w);
+        &#x2F;&#x2F; 通常只保留最短边
+        dist[u][v] &#x3D; min (dist[u][v], w);
+    &#125; 
+    
+    Floyd();
+    
+    while (Q --) &#123;
+        int a, b;
+        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+        if (dist[a][b] &gt; INF &#x2F; 2) puts(&quot;impossible&quot;);
+        else printf(&quot;%d\n&quot;, dist[a][b]);
+    &#125;
+    
+    return 0;
+&#125;</code></pre></div><hr><div><div class="post-metas mb-3"><div class="post-meta mr-3"><i class="iconfont icon-category"></i> <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/C/">C++</a> <a class="hover-with-bg" href="/tags/Algorithm/">Algorithm</a> <a class="hover-with-bg" href="/tags/Template/">Template</a></div></div><p class="note note-warning">本博客所有文章均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-NC-SA 4.0 协议</a> ，禁止商用，转载请注明出处！</p><div class="post-prevnext row"><article class="post-prev col-6"><a href="/2021/07/03/Algorithm/Template/20210703-0x60-%E5%9B%BE%E8%AE%BA-(3)-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">图论-(3)-最小生成树</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/2021/07/01/Algorithm/Template/20210701-0x60-%E5%9B%BE%E8%AE%BA-(1)-%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E4%B8%8E%E9%81%8D%E5%8E%86/"><span class="hidden-mobile">0x60图论-(1)-图的存储与遍历</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article class="comments" id="comments"><div id="vcomments"></div><script type="text/javascript">function loadValine(){addScript("https://cdn.staticfile.org/valine/1.4.14/Valine.min.js",(function(){new Valine({el:"#vcomments",app_id:"zFsXUmmjrQgI8Mwc4q1hoeFX-gzGzoHsz",app_key:"lhfQutIrdSGngahzOrpkaKBU",placeholder:"说点什么吧！~(支持Markdown语法)",path:window.location.pathname,avatar:"retro",meta:["nick","mail","link"],pageSize:"10",lang:"zh-CN",highlight:!0,recordIP:!1,serverURLs:""})}))}waitElementVisible("vcomments",loadValine)</script><noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a></noscript></article></article></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div id="tocbot"></div></div></div></div></div></main><a id="scroll-top-button" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div><div id="aplayer"></div><script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css"><script type="text/javascript">var oldLoadAp=window.onload;window.onload=function(){oldLoadAp&&oldLoadAp(),new APlayer({container:document.getElementById("aplayer"),fixed:!0,autoplay:!1,loop:"all",order:"list",theme:"#b7daff",preload:"auto",lrcType:3,audio:[{name:"Reforget",artist:"Lauv",url:"/songs/Reforget.wav",cover:"/img/songs/Cover_Reforget.jpg",lrc:"/songs/lrc/Reforget.lrc"},{name:"Saint",artist:"Travis Scott & Quavo",url:"/songs/Saint.wav",cover:"/img/songs/Cover_Saint.jpg",lrc:"/songs/lrc/Saint.lrc"},{name:"Antisocial",artist:"Travis Scott & Ed Sheeran",url:"/songs/Antisocial.wav",cover:"/img/songs/Cover_Antisocial.jpg",lrc:"/songs/lrc/Antisocial.lrc"},{name:"Champion",artist:"Travis Scott & Nav",url:"/songs/Champion.wav",cover:"/img/songs/Cover_Champion.jpg",lrc:"/songs/lrc/Champion.lrc"},{name:"Smile",artist:"The Weekend & Juice WRLD",url:"/songs/Smile.wav",cover:"/img/songs/Cover_Smile.jpg",lrc:"/songs/lrc/Smile.lrc"},{name:"Starboy",artist:"The Weekend",url:"/songs/Starboy.wav",cover:"/img/songs/Cover_Starboy.jpg",lrc:"/songs/lrc/Starboy.lrc"},{name:"Sidewalks",artist:"The Weekend",url:"/songs/Sidewalks.wav",cover:"/img/songs/Cover_Sidewalks.jpg",lrc:"/songs/lrc/Sidewalks.lrc"},{name:"Reminder",artist:"The Weekend",url:"/songs/Reminder.wav",cover:"/img/songs/Cover_Reminder.jpg",lrc:"/songs/lrc/Reminder.lrc"},{name:"Die For You",artist:"The Weekend",url:"/songs/Die For You.wav",cover:"/img/songs/Cover_Die For You.jpg",lrc:"/songs/lrc/Die For You.lrc"},{name:"Pray For Me",artist:"The Weekend & Kendrick Lamar",url:"/songs/Pray For Me.wav",cover:"/img/songs/Cover_Pray For Me.jpg",lrc:"/songs/lrc/Pray For Me.lrc"}]})}</script><footer class="mt-5"><div class="text-center py-3"><div><br>Powered by: <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> Theme: <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a></div><div class="statistics"><span id="busuanzi_container_site_pv" style="display:none">总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span><span id="busuanzi_container_site_uv" style="display:none">总访客数 <span id="busuanzi_value_site_uv"></span> 人</span></div></div></footer><script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script><script src="/js/debouncer.js"></script><script src="/js/main.js"></script><script src="/js/lazyload.js"></script><script src="https://cdn.staticfile.org/prism/1.21.0/components/prism-core.min.js"></script><script src="https://cdn.staticfile.org/prism/1.21.0/plugins/autoloader/prism-autoloader.min.js"></script><script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js"></script><script src="/js/clipboard-use.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js"></script><script>$(document).ready((function(){var t=$("#board-ctn").offset().top;tocbot.init({tocSelector:"#tocbot",contentSelector:"#post-body",headingSelector:"h1,h2,h3,h4,h5,h6",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",collapseDepth:0,scrollSmooth:!0,headingsOffset:-t}),$(".toc-list-item").length>0&&$("#toc").css("visibility","visible")}))</script><script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script><script>var typed=new Typed("#subtitle",{strings:["  ","0x60图论-(2)-最短路&nbsp;"],cursorChar:"_",typeSpeed:72,loop:!1});typed.stop(),$(document).ready((function(){$(".typed-cursor").addClass("h2"),typed.start()}))</script><script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script><script>anchors.options={placement:"right",visible:"hover"};var el="h1,h2,h3,h4,h5,h6".split(","),res=[];for(item of el)res.push(".markdown-body > "+item);anchors.add(res.join(", "))</script><script src="/js/local-search.js"></script><script>var path="/local-search.xml",inputArea=document.querySelector("#local-search-input");inputArea.onclick=function(){searchFunc(path,"local-search-input","local-search-result"),this.onclick=null}</script><script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"><script>$("#post img:not(.no-zoom img, img[no-zoom]), img[zoom]").each((function(){var t=document.createElement("a");$(t).attr("data-fancybox","images"),$(t).attr("href",$(this).attr("src")),$(this).wrap(t)}))</script><link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css"><script defer>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?f9aad97d2fdeed725d5d52997eaebaa9";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script></body></html>
