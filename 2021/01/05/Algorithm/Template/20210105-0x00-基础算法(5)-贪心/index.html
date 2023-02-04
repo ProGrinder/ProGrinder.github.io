@@ -1,0 +1,345 @@
+<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="&#34;auto&#34;"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/default/greycat.ico"><link rel="icon" type="image/png" href="/img/default/greycat.ico"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="theme-color" content="#2f4154"><meta name="description" content=""><meta name="author" content="Grinder"><meta name="keywords" content=""><title>0x00-基础算法-(5)-贪心 - Be Grinder,for Better</title><link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="/lib/hint/hint.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-coy.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css"><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1746382_qrhzb41budd.css"><link rel="stylesheet" href="/css/Normalize.css"><link rel="stylesheet" href="/css/GrinderStyle.css"><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 5.2.0"></head><body><header style="height:72vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/">&nbsp;<strong>Grinder's Space</strong>&nbsp;</a> <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/"><i class="iconfont icon-home-fill"></i> 首页</a></li><li class="nav-item"><a class="nav-link" href="/archives/"><i class="iconfont icon-archive-fill"></i> 归档</a></li><li class="nav-item"><a class="nav-link" href="/categories/"><i class="iconfont icon-category-fill"></i> 分类</a></li><li class="nav-item"><a class="nav-link" href="/tags/"><i class="iconfont icon-tags-fill"></i> 标签</a></li><li class="nav-item"><a class="nav-link" href="/about/"><i class="iconfont icon-user-fill"></i> 关于</a></li><li class="nav-item"><a class="nav-link" href="/links/"><i class="iconfont icon-link-fill"></i> 友链</a></li><li class="nav-item" id="search-btn"><a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i class="iconfont icon-search"></i>&nbsp;</a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" href="javascript:">&nbsp;<i class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a></li></ul></div></div></nav><div class="banner intro-2" id="background" parallax="true" style="background:url(/img/default/None.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.07)"><div class="container page-header text-center fade-in-up"><span class="h2" id="subtitle"></span><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2021-01-05 17:00" pubdate>2021年1月5日 下午</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 3.1k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 64 分钟 </span><span id="busuanzi_container_page_pv" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span> 次</span></div></div></div></div></div></header><main><div class="container-fluid"><div class="row"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-md"><div class="container nopadding-md" id="board-ctn"><div class="py-5" id="board"><article class="post-content mx-auto" id="post"><h1 style="display:none">0x00-基础算法-(5)-贪心</h1><div class="markdown-body" id="post-body"><h2 id="贪心算法"><a class="markdownIt-Anchor" href="#贪心算法"></a> 贪心算法</h2><p>贪心算法（greedy algorithm），是用计算机来模拟一个「贪心」的人做出决策的过程。这个人十分贪婪，每一步行动总是按某种指标选取最优的操作。而且他目光短浅，总是只看眼前，并不考虑以后可能造成的影响。</p><p>可想而知，并不是任何时候贪心法都能获得最优解，所以一般使用贪心法的时候，都要确保自己能证明其正确性（通常用反证法或数学归纳法证明）。</p><blockquote><p>贪心类问题无疑是基础算法中难度最大的，难点在于思维的跳跃性，没有固定的解题模式，往往是一类题一种解法或结论。</p></blockquote><p>总而言之：贪心是指每次找局部最优解，就可以找到全局最优解，所以贪心一般要求函数是单峰的。动态规划的限制会少一些，一般是枚举了空间中的所有值，找出了最优解。这两个算法一般是从经验出发来判断，所以要多做题。</p><p>下面介绍一些常见的贪心问题以及其对应的启发式策略。</p><h3 id="区间问题"><a class="markdownIt-Anchor" href="#区间问题"></a> 区间问题</h3><p>区间问题最重要的其实不是选择按左端点还是右端点排序【因为按左端点排序和按右端点排序的解法可以相互转换】，而是排序后，应该优先考虑包含区间还是被包含区间，这才是本质问题。</p><p>最少覆盖区间点数和最大不相交区间数，要优先考虑被包含区间。</p><p>区间合并、区间分组、区间覆盖，要优先考虑可以包含区间。</p><h4 id="最少覆盖区间点数"><a class="markdownIt-Anchor" href="#最少覆盖区间点数"></a> 最少覆盖区间点数</h4><p>数轴上有若干区间，在数轴上选点，使得每个区间内至少包含一个点，求选择的点的最小数量。</p><blockquote><p>贪心策略：</p><p>Step1: 区间按左端点从小到大排序</p><p>Step2: 按倒序依次枚举每个区间：<br>如果当前区间已经包含该点，则直接continue；<br>否则，选择当前区间左端点</p></blockquote><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/907/">AcWing-905.区间选点</a></p><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+typedef pair&lt;int, int&gt; PII;
+
+const int INF &#x3D; 0x3f3f3f3f;
+
+int n;
+vector&lt;PII&gt; segs;
+
+int main() &#123;
+    cin &gt;&gt; n;
+    for (int i &#x3D; 0; i &lt; n; i ++) &#123;
+        int l, r;
+        scanf(&quot;%d %d&quot;, &amp;l, &amp;r);
+        segs.push_back(&#123;l, r&#125;);
+    &#125;
+    
+    &#x2F;&#x2F; step1: 按左端点排序
+    sort(segs.begin(), segs.end());
+    
+    int res &#x3D; 0;
+    int st &#x3D; INF;
+    &#x2F;&#x2F; step2: 倒序枚举
+    for (int i &#x3D; n - 1; i &gt;&#x3D; 0; i --) &#123;
+        &#x2F;&#x2F; 无交集
+        if (segs[i].second &lt; st) &#123;
+            res ++;
+            st &#x3D; segs[i].first;
+        &#125;
+    &#125;
+    
+    cout &lt;&lt; res &lt;&lt; endl;
+    
+    return 0;
+&#125;</code></pre><h4 id="最大不相交区间数"><a class="markdownIt-Anchor" href="#最大不相交区间数"></a> 最大不相交区间数</h4><p>数轴上有若干区间，选择其中尽可能多的区间，使得选中的区间之间互不相交。</p><blockquote><p>贪心策略：</p><p>Step1: 区间按左端点从小到大排序</p><p>Step2: 按倒序依次枚举每个区间：<br>如果两个区间相交，则直接continue；<br>否则，选择当前区间(res ++)，并把比较区间更新为当前区间</p></blockquote><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/910/">AcWing-908.最大不相交区间数量</a></p><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+typedef pair&lt;int, int&gt; PII;
+
+const int INF &#x3D; 0x3f3f3f3f;
+
+int n;
+vector&lt;PII&gt; segs;
+
+int main() &#123;
+    cin &gt;&gt; n;
+    for (int i &#x3D; 0; i &lt; n; i ++)  &#123;
+        int l, r;
+        scanf(&quot;%d %d&quot;, &amp;l, &amp;r);
+        segs.push_back(&#123;l, r&#125;);
+    &#125;
+
+    &#x2F;&#x2F; step1: 按左端点排序
+    sort(segs.begin(), segs.end());
+    
+    int res &#x3D; 0;
+    int st &#x3D; INF;
+    &#x2F;&#x2F; step2: 倒序枚举
+    for (int i &#x3D; n - 1; i &gt;&#x3D; 0; i --) &#123;
+        &#x2F;&#x2F; 无交集
+        if (segs[i].second &lt; st) &#123;
+            res ++;
+            st &#x3D; segs[i].first;
+        &#125;
+    &#125;
+
+    cout &lt;&lt; res &lt;&lt; endl;
+
+    return 0;
+&#125;</code></pre><blockquote><p>综上，可得结论：<strong>最少覆盖区间点数 == 最大不相交区间数</strong></p><p>因为如果几个区间能被同一个点覆盖 ，说明它们相交了，所以有几个点就是有几个不相交区间</p></blockquote><hr><h4 id="区间合并"><a class="markdownIt-Anchor" href="#区间合并"></a> 区间合并</h4><p>数轴上有若干区间，要求合并所有有交集的区间，求合并后的区间个数。</p><blockquote><p>贪心策略：</p><p>Step1: 区间按左端点从小到大排序</p><p>Step2: 按顺序依次枚举区间：<br>如果当前区间与上一个区间没有交集，则把上一个区间放入合并数组内，当前区间更新为上一个区间;<br>否则，把当前区间与上一个区间合并，更新上一个区间的右端点的最大值</p></blockquote><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/805/">AcWing-803.区间合并</a></p><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+typedef pair&lt;int, int&gt; PII;
+
+const int INF &#x3D; 0x3f3f3f3f;
+
+int n;
+vector&lt;PII&gt; segs;
+
+void merge(vector&lt;PII&gt; &amp;segs) &#123;
+    vector&lt;PII&gt; res;
+    
+    &#x2F;&#x2F; step1: 按左端点对区间排序
+    sort(segs.begin(), segs.end());
+    
+    &#x2F;&#x2F; step2: 按顺序依次枚举区间
+    int st &#x3D; -INF, ed &#x3D; -INF;
+    for (int i &#x3D; 0; i &lt; segs.size(); i ++) &#123;
+        &#x2F;&#x2F; 无交集
+        if (ed &lt; segs[i].first) &#123;
+            if(st !&#x3D; -INF) res.push_back(&#123;st, ed&#125;);
+            st &#x3D; segs[i].first, ed &#x3D; segs[i].second;
+        &#125;
+        &#x2F;&#x2F; 有交集
+        else ed &#x3D; max(ed, segs[i].second);
+    &#125;
+    if(st !&#x3D; -INF) res.push_back(&#123;st, ed&#125;);
+
+    segs &#x3D; res;
+&#125;
+
+int main() &#123;
+    cin &gt;&gt; n;
+    
+    for (int i &#x3D; 0; i &lt; n; i ++) &#123;
+        int l, r;
+        scanf(&quot;%d %d&quot;, &amp;l, &amp;r);
+        segs.push_back(&#123;l, r&#125;);
+    &#125;
+    
+    merge(segs);
+    
+    cout &lt;&lt; segs.size() &lt;&lt; endl;
+    
+    return 0;
+&#125;</code></pre><h4 id="区间分组"><a class="markdownIt-Anchor" href="#区间分组"></a> 区间分组</h4><p>数轴上有若干区间，给这些区间分组，使得每组内的区间互不相交，求最小分组数量。</p><blockquote><p>贪心策略：</p><p>Step1: 区间按左端点从小到大排序</p><p>Step2: 用一个小根堆维护当前分组(<code>pair&lt;右端点, 分组id&gt;</code>)，按顺序依次枚举每个区间:<br>每次取出堆顶的组，如果组内区间与当前区间无交集，则让当前区间加入该组，并更新区间右端点;<br>否则，以当前区间右端点新建一个分组，加入到小根堆中</p></blockquote><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/907/">AcWing-905.区间选点</a></p><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+typedef pair&lt;int, int&gt; PII;
+
+vector&lt;PII&gt; seg;
+
+int n;
+
+int main() &#123;
+    cin &gt;&gt; n;
+    seg.resize(n);
+    for (int i &#x3D; 0; i &lt; n; i ++) &#123;
+        scanf(&quot;%d %d&quot;, &amp;seg[i].first, &amp;seg[i].second);
+    &#125;
+    sort(seg.begin(), seg.end());
+
+    priority_queue&lt;PII, vector&lt;PII&gt;, greater&lt;PII&gt;&gt; pq;
+    for (int i &#x3D; 0; i &lt; n; i ++) &#123;
+        &#x2F;&#x2F; 组数不为空，并且组内区间与当前区间无交集
+        if (!pq.empty() &amp;&amp; pq.top().first &lt; seg[i].first) &#123;
+            auto t &#x3D; pq.top(); pq.pop();
+            t.first &#x3D; seg[i].second;
+            pq.push(t);
+        &#125;
+        &#x2F;&#x2F; 有交集
+        else &#123;
+            pq.push(&#123;seg[i].second, pq.size() + 1&#125;);
+        &#125;
+    &#125;
+
+    cout &lt;&lt; pq.size() &lt;&lt; endl;
+
+    return 0;
+&#125;</code></pre><p>区间分组也是最大区间厚度(最多区间重叠部分)，这里有一种<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mord mathdefault" style="margin-right:.02778em">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>的解法:</p><p>思路：我们可以把所有开始时间和结束时间排序，遇到开始时间就把需要的教室加1，遇到结束时间就把需要的教室减1,在一系列需要的教室个数变化的过程中，峰值就是多同时进行的活动数，也是我们至少需要的教室数。</p><p><a target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/8902/">https://www.acwing.com/solution/content/8902/</a></p><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+const int N &#x3D; 100100;
+
+int n;
+int b[2 * N], idx;
+
+int main() &#123;
+    scanf (&quot;%d&quot;, &amp;n);
+    for(int i &#x3D; 0; i &lt; n; i ++) &#123;
+        int l, r;
+        scanf(&quot;%d %d&quot;, &amp;l, &amp;r);
+        b[idx ++] &#x3D; l * 2;&#x2F;&#x2F;标记左端点为偶数。
+        b[idx ++] &#x3D; r * 2 + 1;&#x2F;&#x2F; 标记右端点为奇数。
+    &#125;
+
+    sort(b, b + idx);
+
+    int res &#x3D; 1, t &#x3D; 0;
+    for(int i &#x3D; 0; i &lt; idx; i ++) &#123;
+        if(b[i] % 2 &#x3D;&#x3D; 0) t ++;
+        else t --;
+        res &#x3D; max(res, t);
+    &#125;
+    printf (&quot;%d\n&quot;, res);
+    return 0;
+&#125;</code></pre><h4 id="区间覆盖"><a class="markdownIt-Anchor" href="#区间覆盖"></a> 区间覆盖</h4><p>数轴上有若干区间，选择其中尽可能少的区间，覆盖一个题给指定线段。</p><blockquote><p>贪心策略：</p><p>Step1: 区间按左端点从小到大排序, 初始赋值 <code>st = tar.first, ed = tar.second</code></p><p>Step2: 按顺序依次枚举区间:<br>首先在这些segs中挑出满足左端点 &lt;= st的线段，<br>然后在这些线段中 ，选择second最大的那个作为覆盖区间，并把st更新为该区间的second<br>重复Step2，直到<code>r &gt;= ed</code></p><p>首先在这些segs中挑出满足左端点 &lt;= st的线段，</p><p>注意，会有无解情况，因此需要设置flag来判断:<br>① 找不到满足first &lt;= st的线段，或者这些区间全与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">[</mo><mi>s</mi><mi>t</mi><mo separator="true">,</mo><mi>e</mi><mi>d</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[st,ed]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em"></span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.16666666666666666em"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mclose">]</span></span></span></span>不相交(<code>r &lt; st</code>)<br>② 遍历完整个区间后r仍然 &lt; ed</p></blockquote><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+typedef pair&lt;int, int&gt; PII;
+
+const int INF &#x3D; 0x3f3f3f3f;
+
+int n;
+PII tar;
+vector&lt;PII&gt; segs;
+
+int main() &#123;
+    cin &gt;&gt; tar.first &gt;&gt; tar.second;
+    cin &gt;&gt; n;
+    for (int i &#x3D; 0; i &lt; n; i ++) &#123;
+        int l, r;
+        scanf(&quot;%d %d&quot;, &amp;l, &amp;r);
+        segs.push_back(&#123;l, r&#125;);
+    &#125;
+
+    sort(segs.begin(), segs.end());
+
+    int res &#x3D; 0;
+    bool flag &#x3D; false;
+    int st &#x3D; tar.first, ed &#x3D; tar.second;
+    for (int i &#x3D; 0; i &lt; n; i ++) &#123;
+        int j &#x3D; i, r &#x3D; -INF;
+        while  (j &lt; n &amp;&amp; segs[j].first &lt;&#x3D; st) &#123;
+            r &#x3D; max(r, segs[j].second);
+            j ++;
+        &#125;
+
+        if (r &lt; st) &#123;
+            res &#x3D; -1;
+            break;
+        &#125;
+
+        res ++;
+        if (r &gt;&#x3D; ed)  &#123;
+            flag &#x3D; true;
+            break;
+        &#125;
+
+        st  &#x3D; r;
+        i &#x3D; j - 1;
+    &#125;
+
+    if (!flag) res &#x3D; -1;
+    cout &lt;&lt; res &lt;&lt; endl;
+
+    return 0;
+&#125;</code></pre><h3 id="其它经典贪心"><a class="markdownIt-Anchor" href="#其它经典贪心"></a> 其它经典贪心</h3><h4 id="合并果子"><a class="markdownIt-Anchor" href="#合并果子"></a> 合并果子</h4><p>有n堆果子，需要两两合并，经过n-1次合并成 1堆果子 ，求合并最少需要花费的体力。[把两堆果子合并到一起，消耗的体力等于两堆果子的重量之和]</p><blockquote><p><strong>贪心策略</strong></p><p>每次选择最小重量的两堆进行合并，即为最小花费体力。</p><p><strong>ps</strong>:整个合并过程就是一个二叉树，每个结点的<strong>贡献次数</strong>就是结点到根结点的距离。</p></blockquote><p>题目链接:<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/150/">https://www.acwing.com/problem/content/150/</a></p><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int n;
+
+int main() &#123;
+    cin &gt;&gt; n;
+    priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; pq;
+    for (int i &#x3D; 0; i &lt; n; i ++) &#123;
+        int x;
+        scanf(&quot;%d&quot;, &amp;x);
+        pq.push(x);
+    &#125;
+    
+    long long res &#x3D; 0;
+    while(pq.size() !&#x3D; 1) &#123;
+        int t1 &#x3D; pq.top(); pq.pop();
+        int t2 &#x3D; pq.top(); pq.pop();
+        
+        int t &#x3D; t1 + t2;
+        res +&#x3D; t;
+        pq.push(t);
+    &#125;
+    
+    cout &lt;&lt; res &lt;&lt; endl;
+    return 0;
+&#125;</code></pre><h4 id="排队打水"><a class="markdownIt-Anchor" href="#排队打水"></a> 排队打水</h4><p>有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0"></span><span class="mord mathdefault">n</span></span></span></span> 个人排队到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.64444em;vertical-align:0"></span><span class="mord">1</span></span></span></span> 个水龙头处打水，第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.65952em;vertical-align:0"></span><span class="mord mathdefault">i</span></span></span></span> 个人装满水桶所需的时间是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.76508em;vertical-align:-.15em"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.31166399999999994em"><span style="top:-2.5500000000000003em;margin-left:0;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em"><span></span></span></span></span></span></span></span></span></span>，请问如何安排他们的打水顺序才能使所有人的等待时间之和最小？</p><blockquote><p><strong>贪心策略</strong></p><p>由<code>i</code>的任意性，打水的时间总和为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>∗</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><msub><mi>t</mi><msub><mi>i</mi><mn>2</mn></msub></msub><mo>∗</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><msub><mi>t</mi><msub><mi>i</mi><mi>n</mi></msub></msub><mo>∗</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">{t_{i_1}*(n-1) + t_{i_2}*(n-2) + ...t_{i_n}*(n-n)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0001em;vertical-align:-.2501em"></span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.31166399999999994em"><span style="top:-2.5500000000000003em;margin-left:0;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.31731428571428577em"><span style="top:-2.357em;margin-left:0;margin-right:.07142857142857144em"><span class="pstrut" style="height:2.5em"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.143em"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.2501em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.31166399999999994em"><span style="top:-2.5500000000000003em;margin-left:0;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.31731428571428577em"><span style="top:-2.357em;margin-left:0;margin-right:.07142857142857144em"><span class="pstrut" style="height:2.5em"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.143em"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.2501em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.31166399999999994em"><span style="top:-2.5500000000000003em;margin-left:0;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.16454285714285719em"><span style="top:-2.357em;margin-left:0;margin-right:.07142857142857144em"><span class="pstrut" style="height:2.5em"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.143em"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.2501em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span>，也就是<strong>前缀和之和</strong></p><p>要想让前缀和之和最小，显然从小到大排序即可</p></blockquote><p>题目链接: <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/915/">https://www.acwing.com/problem/content/915/</a></p><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+typedef long long LL;
+
+const int N &#x3D; 1e5 + 7;
+
+int n;
+int arr[N];
+LL sum[N];
+
+int main() &#123;
+    cin &gt;&gt; n;
+    for (int i &#x3D; 1; i &lt;&#x3D; n; i ++) &#123;
+        scanf(&quot;%d&quot;, &amp;arr[i]);
+    &#125;
+    
+    sort(arr + 1, arr + n + 1);
+    
+    sum[0] &#x3D; 0;
+    for (int i &#x3D; 1; i &lt;&#x3D; n; i ++) &#123;
+        sum[i] &#x3D; sum[i - 1] + arr[i];
+    &#125;
+    
+    LL res &#x3D; 0;
+    &#x2F;&#x2F; 最后一个人的时间不用等
+    for (int i &#x3D; 1; i &lt; n; i ++) &#123;
+        res +&#x3D; sum[i];
+    &#125;
+    
+    cout &lt;&lt; res &lt;&lt; endl;
+    
+    return 0;
+&#125;</code></pre><h4 id="货仓选址"><a class="markdownIt-Anchor" href="#货仓选址"></a> 货仓选址</h4><blockquote><p><strong>贪心策略</strong></p><p>显然，如果</p></blockquote><pre class="language-none"><code class="language-none"></code></pre><h4 id="耍杂技的牛国王游戏"><a class="markdownIt-Anchor" href="#耍杂技的牛国王游戏"></a> 耍杂技的牛/国王游戏</h4><blockquote><p><strong>贪心策略</strong></p><p>按照<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub><mo>+</mo><msub><mi>s</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">{w_{i} + s_{i}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.73333em;vertical-align:-.15em"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:.02691em">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.31166399999999994em"><span style="top:-2.5500000000000003em;margin-left:-.02691em;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.2222222222222222em"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.31166399999999994em"><span style="top:-2.5500000000000003em;margin-left:0;margin-right:.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em"><span></span></span></span></span></span></span></span></span></span></span>从小到大的顺序，来从高往低叠罗汉</p></blockquote><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/127/">https://www.acwing.com/problem/content/127/</a></p><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+typedef pair&lt;int, int&gt; PII;
+
+const int INF &#x3D; 0x3f3f3f3f;
+
+int n;
+vector&lt;PII&gt; cows;
+
+int main() &#123;
+    cin &gt;&gt; n;
+    for (int i &#x3D; 0; i &lt; n; i ++) &#123;
+        int w, s;
+        scanf(&quot;%d %d&quot;, &amp;w, &amp;s);
+        cows.push_back(&#123;w, s&#125;);
+    &#125;
+    
+    sort(cows.begin(),cows.end(), [&amp;](const PII&amp;a,  const PII&amp; b) -&gt; bool&#123;
+       return a.first + a.second &lt; b.first + b.second;
+    &#125;);
+    
+    int res &#x3D; -INF, sum &#x3D; 0;
+    for (int i &#x3D; 0; i &lt; n; i ++) &#123;
+        res &#x3D; max(res, sum - cows[i].second);
+        sum +&#x3D; cows[i].first;
+    &#125;
+    
+    cout &lt;&lt; res &lt;&lt; endl;
+    
+    return 0;
+&#125;</code></pre><h4 id="else"><a class="markdownIt-Anchor" href="#else"></a> Else</h4><ul><li>一个序列中任意两个值绝对值之差的最小值，就是把该序列排序后，相邻元素之差的最小值</li></ul></div><hr><div><div class="post-metas mb-3"><div class="post-meta mr-3"><i class="iconfont icon-category"></i> <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/Algorithm/">Algorithm</a> <a class="hover-with-bg" href="/tags/C/">C++</a> <a class="hover-with-bg" href="/tags/Template/">Template</a></div></div><p class="note note-warning">本博客所有文章均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-NC-SA 4.0 协议</a> ，禁止商用，转载请注明出处！</p><div class="post-prevnext row"><article class="post-prev col-6"><a href="/2021/02/01/Algorithm/Template/20210201-0x10-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-(1)-%E9%93%BE%E8%A1%A8/"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">基础数据结构-(1)-链表</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/2021/01/04/Algorithm/Template/20210104-0x00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95(4)-%E5%89%8D%E7%BC%80%E5%92%8C&amp;%E5%B7%AE%E5%88%86/"><span class="hidden-mobile">0x00-基础算法-(4)-前缀和&差分</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article class="comments" id="comments"><div id="vcomments"></div><script type="text/javascript">function loadValine(){addScript("https://cdn.staticfile.org/valine/1.4.14/Valine.min.js",(function(){new Valine({el:"#vcomments",app_id:"zFsXUmmjrQgI8Mwc4q1hoeFX-gzGzoHsz",app_key:"lhfQutIrdSGngahzOrpkaKBU",placeholder:"说点什么吧！~(支持Markdown语法)",path:window.location.pathname,avatar:"retro",meta:["nick","mail","link"],pageSize:"10",lang:"zh-CN",highlight:!0,recordIP:!1,serverURLs:""})}))}waitElementVisible("vcomments",loadValine)</script><noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a></noscript></article></article></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div id="tocbot"></div></div></div></div></div></main><a id="scroll-top-button" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div><div id="aplayer"></div><script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css"><script type="text/javascript">var oldLoadAp=window.onload;window.onload=function(){oldLoadAp&&oldLoadAp(),new APlayer({container:document.getElementById("aplayer"),fixed:!0,autoplay:!1,loop:"all",order:"list",theme:"#b7daff",preload:"auto",lrcType:3,audio:[{name:"Reforget",artist:"Lauv",url:"/songs/Reforget.wav",cover:"/img/songs/Cover_Reforget.jpg",lrc:"/songs/lrc/Reforget.lrc"},{name:"Saint",artist:"Travis Scott & Quavo",url:"/songs/Saint.wav",cover:"/img/songs/Cover_Saint.jpg",lrc:"/songs/lrc/Saint.lrc"},{name:"Antisocial",artist:"Travis Scott & Ed Sheeran",url:"/songs/Antisocial.wav",cover:"/img/songs/Cover_Antisocial.jpg",lrc:"/songs/lrc/Antisocial.lrc"},{name:"Champion",artist:"Travis Scott & Nav",url:"/songs/Champion.wav",cover:"/img/songs/Cover_Champion.jpg",lrc:"/songs/lrc/Champion.lrc"},{name:"Smile",artist:"The Weekend & Juice WRLD",url:"/songs/Smile.wav",cover:"/img/songs/Cover_Smile.jpg",lrc:"/songs/lrc/Smile.lrc"},{name:"Starboy",artist:"The Weekend",url:"/songs/Starboy.wav",cover:"/img/songs/Cover_Starboy.jpg",lrc:"/songs/lrc/Starboy.lrc"},{name:"Sidewalks",artist:"The Weekend",url:"/songs/Sidewalks.wav",cover:"/img/songs/Cover_Sidewalks.jpg",lrc:"/songs/lrc/Sidewalks.lrc"},{name:"Reminder",artist:"The Weekend",url:"/songs/Reminder.wav",cover:"/img/songs/Cover_Reminder.jpg",lrc:"/songs/lrc/Reminder.lrc"},{name:"Die For You",artist:"The Weekend",url:"/songs/Die For You.wav",cover:"/img/songs/Cover_Die For You.jpg",lrc:"/songs/lrc/Die For You.lrc"},{name:"Pray For Me",artist:"The Weekend & Kendrick Lamar",url:"/songs/Pray For Me.wav",cover:"/img/songs/Cover_Pray For Me.jpg",lrc:"/songs/lrc/Pray For Me.lrc"}]})}</script><footer class="mt-5"><div class="text-center py-3"><div><br>Powered by: <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> Theme: <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a></div><div class="statistics"><span id="busuanzi_container_site_pv" style="display:none">总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span><span id="busuanzi_container_site_uv" style="display:none">总访客数 <span id="busuanzi_value_site_uv"></span> 人</span></div></div></footer><script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script><script src="/js/debouncer.js"></script><script src="/js/main.js"></script><script src="/js/lazyload.js"></script><script src="https://cdn.staticfile.org/prism/1.21.0/components/prism-core.min.js"></script><script src="https://cdn.staticfile.org/prism/1.21.0/plugins/autoloader/prism-autoloader.min.js"></script><script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js"></script><script src="/js/clipboard-use.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js"></script><script>$(document).ready((function(){var t=$("#board-ctn").offset().top;tocbot.init({tocSelector:"#tocbot",contentSelector:"#post-body",headingSelector:"h1,h2,h3,h4,h5,h6",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",collapseDepth:0,scrollSmooth:!0,headingsOffset:-t}),$(".toc-list-item").length>0&&$("#toc").css("visibility","visible")}))</script><script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script><script>var typed=new Typed("#subtitle",{strings:["  ","0x00-基础算法-(5)-贪心&nbsp;"],cursorChar:"_",typeSpeed:72,loop:!1});typed.stop(),$(document).ready((function(){$(".typed-cursor").addClass("h2"),typed.start()}))</script><script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script><script>anchors.options={placement:"right",visible:"hover"};var el="h1,h2,h3,h4,h5,h6".split(","),res=[];for(item of el)res.push(".markdown-body > "+item);anchors.add(res.join(", "))</script><script src="/js/local-search.js"></script><script>var path="/local-search.xml",inputArea=document.querySelector("#local-search-input");inputArea.onclick=function(){searchFunc(path,"local-search-input","local-search-result"),this.onclick=null}</script><script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"><script>$("#post img:not(.no-zoom img, img[no-zoom]), img[zoom]").each((function(){var t=document.createElement("a");$(t).attr("data-fancybox","images"),$(t).attr("href",$(this).attr("src")),$(this).wrap(t)}))</script><link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css"><script defer>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?f9aad97d2fdeed725d5d52997eaebaa9";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script></body></html>
