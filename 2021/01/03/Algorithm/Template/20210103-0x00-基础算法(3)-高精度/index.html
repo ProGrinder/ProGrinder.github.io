@@ -155,7 +155,7 @@ int main() &#123;
     for (int i &#x3D; C.size() - 1; i &gt;&#x3D; 0; i --) printf(&quot;%d&quot;, C[i]);
     
     return 0;
-&#125;</code></pre><h4 id="a-b-4"><a class="markdownIt-Anchor" href="#a-b-4"></a> A / b</h4><p>高精度正整数A / 低精度正整数b， 返回商C和余数r</p><p>注意人工算除法是从最高位开始除的:<br>因此模拟时for循环要从后往前，并且结束后为了保持大整数存储的一致性，要reverse()反转C</p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;vector&gt;
+&#125;</code></pre><h4 id="a-b-4"><a class="markdownIt-Anchor" href="#a-b-4"></a> A / b</h4><p>高精度正整数A / 低精度正整数b， 返回商C和余数r</p><p>注意人工算除法是从<strong>最高位开始除</strong>的，<br>因此模拟时for循环要从后往前，并且结束后为了保持大整数存储的一致性，要reverse()反转C</p><pre class="language-c" data-language="c"><code class="language-c">#include &lt;vector&gt;
 #include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 
