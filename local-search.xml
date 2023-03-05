@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>2023-03-06-组会</title>
+    <link href="/2023/03/05/Seminar/20230306-%E7%BB%84%E4%BC%9A/"/>
+    <url>/2023/03/05/Seminar/20230306-%E7%BB%84%E4%BC%9A/</url>
+    
+    <content type="html"><![CDATA[<p>弄成一个表格比对好一点？</p><h2 id="其它方式的缺点"><a class="markdownIt-Anchor" href="#其它方式的缺点"></a> 其它方式的缺点</h2><h3 id="oriented-r-cnn"><a class="markdownIt-Anchor" href="#oriented-r-cnn"></a> Oriented R-CNN</h3><p>RPN阶段形成的proposal  bbox  和 RCNN阶段形成的pridect  bbox，其角度是不一致的</p><h3 id="qpdet"><a class="markdownIt-Anchor" href="#qpdet"></a> QPDet</h3><h2 id="我们方式的优点缺点"><a class="markdownIt-Anchor" href="#我们方式的优点缺点"></a> 我们方式的优点，缺点</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>组会</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>旋转目标检测</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>《Effective C++》-读书笔记</title>
     <link href="/2023/03/01/Programing/20230301-%E3%80%8AEffective%20C++%E3%80%8B-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <url>/2023/03/01/Programing/20230301-%E3%80%8AEffective%20C++%E3%80%8B-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
