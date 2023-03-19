@@ -97,6 +97,33 @@
   
   
   <entry>
+    <title>Large Selective Kernel Network</title>
+    <link href="/2023/03/19/AI-Learning/20230319-H2RBox/"/>
+    <url>/2023/03/19/AI-Learning/20230319-H2RBox/</url>
+    
+    <content type="html"><![CDATA[<h1 id="large-selective-kernel-network"><a class="markdownIt-Anchor" href="#large-selective-kernel-network"></a> Large Selective Kernel Network</h1><h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2><p><strong>论文题目</strong> ：Large Selective Kernel Network for Remote Sensing Object Detection</p><p><strong>论文地址</strong> ：<a href="https://arxiv.org/abs/2303.0903v1">https://arxiv.org/abs/2303.0903v1</a></p><p><strong>论文出处</strong> ：arxiv 2023.03</p><p><strong>代码实现</strong> ：<a href="https://github.com/zcablii/Large-Selective-Kernel-Network">https://github.com/zcablii/Large-Selective-Kernel-Network</a></p><h2 id="idea"><a class="markdownIt-Anchor" href="#idea"></a> Idea</h2><h2 id="detail"><a class="markdownIt-Anchor" href="#detail"></a> Detail</h2><h2 id="result"><a class="markdownIt-Anchor" href="#result"></a> Result</h2><p><img src="/img/article/2022/11/21/8.png" alt="" /></p><h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>深度学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计算机视觉</tag>
+      
+      <tag>目标检测</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2023-03-13-组会</title>
     <link href="/2023/03/13/Seminar/20230313-%E7%BB%84%E4%BC%9A/"/>
     <url>/2023/03/13/Seminar/20230313-%E7%BB%84%E4%BC%9A/</url>
