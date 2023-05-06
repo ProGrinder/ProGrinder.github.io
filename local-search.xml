@@ -29,11 +29,11 @@
   
   
   <entry>
-    <title>Y-combinator与Lambda递归</title>
+    <title>闭包浅谈--从函数式编程的角度</title>
     <link href="/2023/04/14/Programing/20230414-Y-combinator%E4%B8%8ELambda%E9%80%92%E5%BD%92/"/>
     <url>/2023/04/14/Programing/20230414-Y-combinator%E4%B8%8ELambda%E9%80%92%E5%BD%92/</url>
     
-    <content type="html"><![CDATA[<p>Lambda</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="闭包的概念"><a class="markdownIt-Anchor" href="#闭包的概念"></a> 闭包的概念</h2><h3 id="抽象代数中的闭包"><a class="markdownIt-Anchor" href="#抽象代数中的闭包"></a> 抽象代数中的闭包</h3><h3 id="函数式编程中的闭包"><a class="markdownIt-Anchor" href="#函数式编程中的闭包"></a> 函数式编程中的闭包</h3><h3 id="y-combinator与lambda递归"><a class="markdownIt-Anchor" href="#y-combinator与lambda递归"></a> Y-combinator与Lambda递归</h3>]]></content>
     
     
     <categories>
