@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>2023-05-22-组会</title>
+    <link href="/2023/05/21/Seminar/20230522-%E7%BB%84%E4%BC%9A/"/>
+    <url>/2023/05/21/Seminar/20230522-%E7%BB%84%E4%BC%9A/</url>
+    
+    <content type="html"><![CDATA[<h2 id="哈哈"><a class="markdownIt-Anchor" href="#哈哈"></a> 哈哈</h2><h3 id="组会"><a class="markdownIt-Anchor" href="#组会"></a> 组会</h3><p>Backbone :  ResNet 提取多尺度特征</p><p>Neck：FPN 多尺度特征融合、特征增强</p><p>RPN：</p><p>置信度objectness</p><p>pred_box_deltas 预测框相对于anchor的偏移量 和anchor 计算出 proposal</p><p>decode : 把预测框的偏移量进行解码，得到proposla的位置</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>组会</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>旋转目标检测</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>为域名更换SSL证书</title>
     <link href="/2023/05/15/Programing/20230515-%E4%B8%BA%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%8D%A2%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6/"/>
     <url>/2023/05/15/Programing/20230515-%E4%B8%BA%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%8D%A2%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6/</url>
@@ -21,6 +46,131 @@
     <tags>
       
       <tag>网站维护</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>系统设计-Ch10-设计一个通知系统</title>
+    <link href="/2023/05/10/20230510-SysDesign-Ch10-Design%20A%20Notification%20System/"/>
+    <url>/2023/05/10/20230510-SysDesign-Ch10-Design%20A%20Notification%20System/</url>
+    
+    <content type="html"><![CDATA[<h2 id="设计一个网络爬虫"><a class="markdownIt-Anchor" href="#设计一个网络爬虫"></a> 设计一个网络爬虫</h2><h3 id="step1understand-the-problem-and-establish-design-scope"><a class="markdownIt-Anchor" href="#step1understand-the-problem-and-establish-design-scope"></a> Step1：Understand the problem and establish design scope</h3><p>对于”设计一个通知系统“这个系统设计话题，我们可以向面试官提出以下问题：</p><h3 id="step2propose-high-level-design-and-get-buy-in"><a class="markdownIt-Anchor" href="#step2propose-high-level-design-and-get-buy-in"></a> Step2：Propose high-level design and get buy-in</h3><h3 id="step3design-deep-dive"><a class="markdownIt-Anchor" href="#step3design-deep-dive"></a> Step3：Design deep dive</h3><h3 id="step4warm-up"><a class="markdownIt-Anchor" href="#step4warm-up"></a> Step4：Warm up</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>系统设计</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>System Design</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>系统设计-Ch10-设计一个通知系统</title>
+    <link href="/2023/05/10/System-Design/20230510-SysDesign-Ch10-Design%20A%20Notification%20System/"/>
+    <url>/2023/05/10/System-Design/20230510-SysDesign-Ch10-Design%20A%20Notification%20System/</url>
+    
+    <content type="html"><![CDATA[<h2 id="设计一个网络爬虫"><a class="markdownIt-Anchor" href="#设计一个网络爬虫"></a> 设计一个网络爬虫</h2><h3 id="step1understand-the-problem-and-establish-design-scope"><a class="markdownIt-Anchor" href="#step1understand-the-problem-and-establish-design-scope"></a> Step1：Understand the problem and establish design scope</h3><p>对于”设计一个通知系统“这个系统设计话题，我们可以向面试官提出以下问题：</p><h3 id="step2propose-high-level-design-and-get-buy-in"><a class="markdownIt-Anchor" href="#step2propose-high-level-design-and-get-buy-in"></a> Step2：Propose high-level design and get buy-in</h3><h3 id="step3design-deep-dive"><a class="markdownIt-Anchor" href="#step3design-deep-dive"></a> Step3：Design deep dive</h3><h3 id="step4warm-up"><a class="markdownIt-Anchor" href="#step4warm-up"></a> Step4：Warm up</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>系统设计</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>System Design</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>系统设计-Ch9-设计一个网络爬虫</title>
+    <link href="/2023/05/09/System-Design/20230509-SysDesign-Ch9-Design%20A%20Web%20Crawler/"/>
+    <url>/2023/05/09/System-Design/20230509-SysDesign-Ch9-Design%20A%20Web%20Crawler/</url>
+    
+    <content type="html"><![CDATA[<h2 id="设计一个网络爬虫"><a class="markdownIt-Anchor" href="#设计一个网络爬虫"></a> 设计一个网络爬虫</h2><h3 id="step1understand-the-problem-and-establish-design-scope"><a class="markdownIt-Anchor" href="#step1understand-the-problem-and-establish-design-scope"></a> Step1：Understand the problem and establish design scope</h3><p>对于”设计一个网络爬虫“这个系统设计话题，我们可以向面试官提出以下问题：</p><h3 id="step2propose-high-level-design-and-get-buy-in"><a class="markdownIt-Anchor" href="#step2propose-high-level-design-and-get-buy-in"></a> Step2：Propose high-level design and get buy-in</h3><h3 id="step3design-deep-dive"><a class="markdownIt-Anchor" href="#step3design-deep-dive"></a> Step3：Design deep dive</h3><h3 id="step4warm-up"><a class="markdownIt-Anchor" href="#step4warm-up"></a> Step4：Warm up</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>系统设计</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>System Design</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>系统设计-Ch8-设计一个短链接生成器</title>
+    <link href="/2023/05/08/System-Design/20230508-SysDesign-Ch8-Design%20A%20URL%20Shortener/"/>
+    <url>/2023/05/08/System-Design/20230508-SysDesign-Ch8-Design%20A%20URL%20Shortener/</url>
+    
+    <content type="html"><![CDATA[<h2 id="设计一个短链接生成器"><a class="markdownIt-Anchor" href="#设计一个短链接生成器"></a> 设计一个短链接生成器</h2><h3 id="step1understand-the-problem-and-establish-design-scope"><a class="markdownIt-Anchor" href="#step1understand-the-problem-and-establish-design-scope"></a> Step1：Understand the problem and establish design scope</h3><p>对于”设计一个短链接生成器“这个系统设计话题，我们可以向面试官提出以下问题：</p><h3 id="step2propose-high-level-design-and-get-buy-in"><a class="markdownIt-Anchor" href="#step2propose-high-level-design-and-get-buy-in"></a> Step2：Propose high-level design and get buy-in</h3><h3 id="step3design-deep-dive"><a class="markdownIt-Anchor" href="#step3design-deep-dive"></a> Step3：Design deep dive</h3><h3 id="step4warm-up"><a class="markdownIt-Anchor" href="#step4warm-up"></a> Step4：Warm up</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>系统设计</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>System Design</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>系统设计-Ch7-设计一个分布式ID生成器</title>
+    <link href="/2023/05/07/System-Design/20230507-SysDesign-Ch7-Design%20A%20Unique%20ID%20Generator%20In%20Distributed%20Systems/"/>
+    <url>/2023/05/07/System-Design/20230507-SysDesign-Ch7-Design%20A%20Unique%20ID%20Generator%20In%20Distributed%20Systems/</url>
+    
+    <content type="html"><![CDATA[<h2 id="设计一个分布式id生成器"><a class="markdownIt-Anchor" href="#设计一个分布式id生成器"></a> 设计一个分布式ID生成器</h2><h3 id="step1understand-the-problem-and-establish-design-scope"><a class="markdownIt-Anchor" href="#step1understand-the-problem-and-establish-design-scope"></a> Step1：Understand the problem and establish design scope</h3><p>对于”设计一个分布式ID生成器“这个系统设计话题，我们可以向面试官提出以下问题：</p><h3 id="step2propose-high-level-design-and-get-buy-in"><a class="markdownIt-Anchor" href="#step2propose-high-level-design-and-get-buy-in"></a> Step2：Propose high-level design and get buy-in</h3><h3 id="step3design-deep-dive"><a class="markdownIt-Anchor" href="#step3design-deep-dive"></a> Step3：Design deep dive</h3><h3 id="step4warm-up"><a class="markdownIt-Anchor" href="#step4warm-up"></a> Step4：Warm up</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>系统设计</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>System Design</tag>
       
     </tags>
     
@@ -3107,7 +3257,7 @@
     <link href="/2022/02/07/Algorithm/LeetCode/20220207-%E4%BA%8C%E5%8F%89%E6%A0%91&amp;N%E5%8F%89%E6%A0%91/"/>
     <url>/2022/02/07/Algorithm/LeetCode/20220207-%E4%BA%8C%E5%8F%89%E6%A0%91&amp;N%E5%8F%89%E6%A0%91/</url>
     
-    <content type="html"><![CDATA[<p>这种用指针表示的数据结构一般在leetcode上才会刷到，板子简单，浅浅总结一下。</p><h2 id="二叉树"><a class="markdownIt-Anchor" href="#二叉树"></a> 二叉树</h2><h3 id="二叉树的前序中序后序遍历-dfs"><a class="markdownIt-Anchor" href="#二叉树的前序中序后序遍历-dfs"></a> 二叉树的前序中序后序遍历-DFS</h3><p><strong>前序遍历</strong></p><p><strong>中序遍历</strong></p><p><strong>后续遍历</strong></p><h3 id="二叉树的层次遍历-bfs"><a class="markdownIt-Anchor" href="#二叉树的层次遍历-bfs"></a> 二叉树的层次遍历-BFS</h3><p>如何在路径中确定祖孙关系</p><h2 id="n叉树"><a class="markdownIt-Anchor" href="#n叉树"></a> N叉树</h2><h3 id="n叉树的前序中序后序遍历-dfs"><a class="markdownIt-Anchor" href="#n叉树的前序中序后序遍历-dfs"></a> N叉树的前序中序后序遍历-DFS</h3><p><strong>前序遍历</strong></p><p><strong>中序遍历</strong></p><p><strong>后续遍历</strong></p><h3 id="n叉树的层次遍历-bfs"><a class="markdownIt-Anchor" href="#n叉树的层次遍历-bfs"></a> N叉树的层次遍历-BFS</h3>]]></content>
+    <content type="html"><![CDATA[<p>这种用指针表示的数据结构一般在leetcode上才会刷到，板子简单，浅浅总结一下。</p><h2 id="二叉树bst"><a class="markdownIt-Anchor" href="#二叉树bst"></a> 二叉树(BST)</h2><p>二叉树考点核心是深度优先搜索。</p><h3 id="二叉树的定义"><a class="markdownIt-Anchor" href="#二叉树的定义"></a> 二叉树的定义</h3><pre class="language-c++" data-language="c++"><code class="language-c++">struct TreeNode &#123;    int val;    TreeNode* left;    TreeNode* right;    TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;    TreeNode(int _val) : val(_val), lefft(nullptr), right(nullptr) &#123;&#125;    TreeNode(int _val, TreeNode* _left, TreeNode* _right) : val(_val), left(_left), right(_right) &#123;&#125;&#125;</code></pre><h3 id="二叉树的前序中序后序遍历-dfs"><a class="markdownIt-Anchor" href="#二叉树的前序中序后序遍历-dfs"></a> 二叉树的前序中序后序遍历-DFS</h3><p><strong>前序遍历</strong></p><p>前序遍历<strong>根左右</strong>，前序指的是根在前</p><pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;public:    vector&lt;int&gt; preorderTraversal(TreeNode* root) &#123;        auto dfs &#x3D; [            f &#x3D; [](auto&amp;&amp; self, TreeNode* root, vector&lt;int&gt;&amp; res) -&gt; void &#123;                if (root &#x3D;&#x3D; nullptr) &#123;                    return;                &#125;                res.push_back(root-&gt;val);                self(self, root-&gt;left, res);                self(self, root-&gt;right, res);            &#125;        ] (TreeNode* root, vector&lt;int&gt;&amp; res) -&gt; void &#123;return f(f, root, res);&#125;;        vector&lt;int&gt; res;        dfs(root, res);        return res;    &#125;&#125;;</code></pre><p>更新，可以这么递归调用lambda</p><pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;public:    vector&lt;int&gt; preorderTraversal(TreeNode* root) &#123;        function&lt;void (TreeNode*, vector&lt;int&gt;&amp;)&gt; dfs &#x3D; [&amp;](TreeNode* root, vector&lt;int&gt;&amp; res) &#123;            if (root &#x3D;&#x3D; nullptr) &#123;                return;            &#125;            res.push_back(root-&gt;val);            dfs(root-&gt;left, res);            dfs(root-&gt;right, res);        &#125;;        vector&lt;int&gt; res;        dfs(root, res);        return res;    &#125;&#125;;</code></pre><p><strong>中序遍历</strong></p><p>中序遍历<strong>左根右</strong>，中序指的是根在中</p><pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;public:    vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;        auto dfs &#x3D; [            f &#x3D; [](auto&amp;&amp; self, TreeNode* root, vector&lt;int&gt;&amp; res) -&gt; void &#123;                if (root &#x3D;&#x3D; nullptr) &#123;                    return;                &#125;                self(self, root-&gt;left, res);                res.push_back(root-&gt;val);                self(self, root-&gt;right, res);            &#125;        ](TreeNode* root, vector&lt;int&gt;&amp; res) &#123;return f(f, root, res);&#125;;        vector&lt;int&gt; res;        dfs(root, res);        return res;    &#125;&#125;;</code></pre><pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;public:    vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;        function&lt;void (TreeNode*, vector&lt;int&gt;&amp;)&gt; dfs &#x3D; [&amp;](TreeNode* root, vector&lt;int&gt;&amp; res) &#123;            if (root &#x3D;&#x3D; nullptr) &#123;                return;            &#125;            dfs(root-&gt;left, res);            res.push_back(root-&gt;val);            dfs(root-&gt;right, res);        &#125;;        vector&lt;int&gt; res;        dfs(root, res);        return res;    &#125;&#125;;</code></pre><p><strong>后续遍历</strong></p><p>后序遍历<strong>左右根</strong>，后序指的是根在后</p><pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;public:    vector&lt;int&gt; postorderTraversal(TreeNode* root) &#123;        auto dfs &#x3D; [            f &#x3D; [](auto&amp;&amp; self, TreeNode* root, vector&lt;int&gt;&amp; res) -&gt; void &#123;                if (root &#x3D;&#x3D; nullptr) &#123;                    return;                &#125;                self(self, root-&gt;left, res);                self(self, root-&gt;right, res);                res.push_back(root-&gt;val);            &#125;        ](TreeNode* root, vector&lt;int&gt;&amp; res) &#123;return f(f, root, res);&#125;;        vector&lt;int&gt; res;        dfs(root, res);        return res;    &#125;&#125;;</code></pre><pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;public:    vector&lt;int&gt; postorderTraversal(TreeNode* root) &#123;        function&lt;void (TreeNode*, vector&lt;int&gt;&amp;)&gt; dfs &#x3D; [&amp;](TreeNode* root, vector&lt;int&gt;&amp; res) &#123;            if (root &#x3D;&#x3D; nullptr) &#123;                return;            &#125;            dfs(root-&gt;left, res);            dfs(root-&gt;right, res);            res.push_back(root-&gt;val);        &#125;;        vector&lt;int&gt; res;        dfs(root, res);        return res;    &#125;&#125;;</code></pre><h3 id="二叉树的层次遍历-bfs"><a class="markdownIt-Anchor" href="#二叉树的层次遍历-bfs"></a> 二叉树的层次遍历-BFS</h3><p>如何在路径中确定祖孙关系</p><h2 id="n叉树"><a class="markdownIt-Anchor" href="#n叉树"></a> N叉树</h2><h3 id="n叉树的前序中序后序遍历-dfs"><a class="markdownIt-Anchor" href="#n叉树的前序中序后序遍历-dfs"></a> N叉树的前序中序后序遍历-DFS</h3><p><strong>前序遍历</strong></p><p><strong>中序遍历</strong></p><p><strong>后续遍历</strong></p><h3 id="n叉树的层次遍历-bfs"><a class="markdownIt-Anchor" href="#n叉树的层次遍历-bfs"></a> N叉树的层次遍历-BFS</h3>]]></content>
     
     
     <categories>
@@ -4094,7 +4244,7 @@
     <link href="/2021/04/01/Algorithm/Template/20210401-0x30-%E6%90%9C%E7%B4%A2-(1)-%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/"/>
     <url>/2021/04/01/Algorithm/Template/20210401-0x30-%E6%90%9C%E7%B4%A2-(1)-%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</url>
     
-    <content type="html"><![CDATA[<h2 id="深度优先搜索"><a class="markdownIt-Anchor" href="#深度优先搜索"></a> 深度优先搜索</h2><p>我们把问题的状态空间看作成一颗搜索树，深度优先搜索（DFS）就是在这颗搜索树上深度优先遍历。</p><p>深度优先搜索与<strong>递归</strong>和<strong>栈</strong>密切相关，因为这两种算法都是<strong>自底向上</strong>的计算过程。</p><p>搜索问题没有模板，只有几种常见的类型，我们针对每道题目都需要考虑它的剪枝优化</p><p><strong>分支</strong></p><p>分支的前后顺序是有区别的：</p><ul><li>影响函数递归边界的输出字典序</li><li>在树的前序、中序、后序遍历中会有体现。</li></ul><p><strong>恢复现场recover</strong></p><p>递归N叉树，每个分支都要recover，不然可能会出现<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>e</mi><mi>g</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>F</mi><mi>a</mi><mi>u</mi><mi>l</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Segmentation Fault</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord mathdefault">a</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">t</span></span></span></span></p><h3 id="剪枝"><a class="markdownIt-Anchor" href="#剪枝"></a> 剪枝</h3><p>void dfs 和 bool dfs的剪枝对比</p><p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mi>n</mi><mi>m</mi></msubsup></mrow><annotation encoding="application/x-tex">C_n^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.93033em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span>只输出一种情况，就要用<strong>bool</strong>来剪枝</p><p><a href="https://leetcode.cn/submissions/detail/405400164/">https://leetcode.cn/submissions/detail/405400164/</a></p><p><a href="https://leetcode.cn/problems/circular-permutation-in-binary-representation/submissions/405399005/">https://leetcode.cn/problems/circular-permutation-in-binary-representation/submissions/405399005/</a></p><h4 id="优化搜索顺序"><a class="markdownIt-Anchor" href="#优化搜索顺序"></a> 优化搜索顺序</h4><h4 id="排除等效冗余"><a class="markdownIt-Anchor" href="#排除等效冗余"></a> 排除等效冗余</h4><h4 id="可行性剪枝"><a class="markdownIt-Anchor" href="#可行性剪枝"></a> 可行性剪枝</h4><h4 id="最优性剪枝"><a class="markdownIt-Anchor" href="#最优性剪枝"></a> 最优性剪枝</h4>]]></content>
+    <content type="html"><![CDATA[<h2 id="深度优先搜索"><a class="markdownIt-Anchor" href="#深度优先搜索"></a> 深度优先搜索</h2><p>我们把问题的状态空间看作成一颗搜索树，深度优先搜索（DFS）就是在这颗搜索树上深度优先遍历。</p><p>深度优先搜索与<strong>递归</strong>和<strong>栈</strong>密切相关，因为这两种算法都是<strong>自底向上</strong>的计算过程。</p><p>搜索问题没有模板，只有几种常见的类型，我们针对每道题目都需要考虑它的剪枝优化</p><p><strong>分支</strong></p><p>分支的前后顺序是有区别的：</p><ul><li>影响函数递归边界的输出字典序</li><li>在树的前序、中序、后序遍历中会有体现。</li></ul><p><strong>恢复现场recover</strong></p><p>递归N叉树，每个分支都要recover，不然可能会出现<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>e</mi><mi>g</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>F</mi><mi>a</mi><mi>u</mi><mi>l</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Segmentation Fault</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord mathdefault">a</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">t</span></span></span></span></p><h3 id="剪枝"><a class="markdownIt-Anchor" href="#剪枝"></a> 剪枝</h3><p>void dfs 和 bool dfs的剪枝对比</p><p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mi>n</mi><mi>m</mi></msubsup></mrow><annotation encoding="application/x-tex">C_n^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.93033em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span>只输出一种情况，就要用<strong>bool</strong>来剪枝</p><p><a href="https://leetcode.cn/submissions/detail/405400164/">https://leetcode.cn/submissions/detail/405400164/</a></p><p><a href="https://leetcode.cn/problems/circular-permutation-in-binary-representation/submissions/405399005/">https://leetcode.cn/problems/circular-permutation-in-binary-representation/submissions/405399005/</a></p><h3 id="记录问题"><a class="markdownIt-Anchor" href="#记录问题"></a> 记录问题</h3><p>如果返回值记录不下来(需要记录多个值，比如一个数组)，就直接入参的引用来记录</p><p>最下策是采用全局变量来记录</p><h4 id="优化搜索顺序"><a class="markdownIt-Anchor" href="#优化搜索顺序"></a> 优化搜索顺序</h4><h4 id="排除等效冗余"><a class="markdownIt-Anchor" href="#排除等效冗余"></a> 排除等效冗余</h4><h4 id="可行性剪枝"><a class="markdownIt-Anchor" href="#可行性剪枝"></a> 可行性剪枝</h4><h4 id="最优性剪枝"><a class="markdownIt-Anchor" href="#最优性剪枝"></a> 最优性剪枝</h4>]]></content>
     
     
     <categories>
