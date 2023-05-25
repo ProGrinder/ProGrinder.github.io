@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>2023-05-22-组会</title>
-    <link href="/2023/05/21/Seminar/20230522-%E7%BB%84%E4%BC%9A/"/>
-    <url>/2023/05/21/Seminar/20230522-%E7%BB%84%E4%BC%9A/</url>
+    <title>2023-05-29-组会</title>
+    <link href="/2023/05/29/Seminar/20230529-%E7%BB%84%E4%BC%9A/"/>
+    <url>/2023/05/29/Seminar/20230529-%E7%BB%84%E4%BC%9A/</url>
     
-    <content type="html"><![CDATA[<h2 id="哈哈"><a class="markdownIt-Anchor" href="#哈哈"></a> 哈哈</h2><h3 id="组会"><a class="markdownIt-Anchor" href="#组会"></a> 组会</h3><p>Backbone :  ResNet 提取多尺度特征</p><p>Neck：FPN 多尺度特征融合、特征增强</p><p>RPN：</p><p>置信度objectness</p><p>pred_box_deltas 预测框相对于anchor的偏移量 和anchor 计算出 proposal</p><p>decode : 把预测框的偏移量进行解码，得到proposla的位置</p>]]></content>
+    <content type="html"><![CDATA[<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2><h3 id="组会"><a class="markdownIt-Anchor" href="#组会"></a> 组会</h3><p>Backbone :  ResNet 提取多尺度特征</p><p>Neck：FPN 多尺度特征融合、特征增强</p><p>RPN：</p><p>置信度objectness</p><p>pred_box_deltas 预测框相对于anchor的偏移量 和anchor 计算出 proposal</p><p>decode : 把预测框的偏移量进行解码，得到proposla的位置</p>]]></content>
     
     
     <categories>
