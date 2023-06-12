@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>2023-06-12-组会</title>
+    <link href="/2023/06/12/20230529-%E7%BB%84%E4%BC%9A/"/>
+    <url>/2023/06/12/20230529-%E7%BB%84%E4%BC%9A/</url>
+    
+    <content type="html"><![CDATA[<h1 id="2023-06-12-组会"><a class="markdownIt-Anchor" href="#2023-06-12-组会"></a> 2023-06-12-组会</h1><p>找一份目标检测知识蒸馏的代码，基于MMCV框架的</p><p>[2022’CVPR]： <a href="https://github.com/yzd-v/FGD">https://github.com/yzd-v/FGD</a></p><p>基于这份代码，修改出了一份Focal</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>组会</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>旋转目标检测</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Knowledge Combination to Learning Rotated Detection Without Rotated Annotation</title>
     <link href="/2023/06/04/AI-Learning/20230605-MixTeacher/"/>
     <url>/2023/06/04/AI-Learning/20230605-MixTeacher/</url>
